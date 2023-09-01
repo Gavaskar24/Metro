@@ -71,7 +71,7 @@ df=df.drop(['OTHERS'],axis=1)
 arr=df['TRIP_SEQUENCE'].unique()
 
 #creating a new trip_sequence column by assigining vlaue to each unique data point in TRIP_SEQUENCE column
-df['TRIP_SEQUENCE_NEW'] = df['TRIP_SEQUENCE'].apply(lambda x: 1 if x='metro' or x='Metro' else 2 if x = 'Bus' else 3 if x = 'Metro+Bus' else 4 if x = 'Train' else 5 if x = 'Bus+metro' else 6 if x='two'or x= 'bike' else 7 if x ='Metro+bus+metro' else 8 if x = 'Bus+metro+bus+bus' else 0)
+# df['TRIP_SEQUENCE_NEW'] = df['TRIP_SEQUENCE'].apply(lambda x: 1 if x='metro' or x='Metro' else 2 if x = 'Bus' else 3 if x = 'Metro+Bus' else 4 if x = 'Train' else 5 if x = 'Bus+metro' else 6 if x='two'or x= 'bike' else 7 if x ='Metro+bus+metro' else 8 if x = 'Bus+metro+bus+bus' else 0)
 
 
 #output the dataframe into a csv file
