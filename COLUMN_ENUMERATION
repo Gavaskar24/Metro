@@ -1,13 +1,69 @@
 ENUMERATION OF DATA COLUMNS:
 
-Column name: DESTINATION_TYPE
-Value: 1 => Work
-Value: 2 => School
-Value: 3 => Friends/Relatives Place
-Value: 4 => Social/Religious Place
-Value: 5 => Home
-Value: 6 => Shopping place
-Value: 7 => Other
-Value: 8 => Restaurant
+Column name: DESTINATION
+Value: 1 => Home
+Value: 2 => Work/Bussiness
+Value: 3 => School/College
+Value: 4 => Shopping
+Value: 5 => Restaurant
+Value: 6 => Social/Religious Place
+Value: 7 => Friends/ Relative's place
+Value: 8 => Other
 
-Column name:
+Column name: ORIGIN
+
+Value: 1 => Home
+Value: 2 => Work/Bussiness
+Value: 3 => School/College
+Value: 4 => Shopping
+Value: 5 => Restaurant
+Value: 6 => Social/Religious Place
+Value: 7 => Friends/ Relative's place
+Value: 8 => Other
+
+Column name: TRIP
+
+Value: 1 => Metro
+Value: 2 => Metro+Bus
+Value: 3 => Bus+Metro
+Value: 4 => Bus1+Metro+Bus2
+Value: 5 => Metro1+Bus+Metro2
+Value: 0 => Other
+
+Column name: ACCESS DISTANCE
+
+Value: 1 => Less than 0.5 km
+Value: 2 => 0.5 km to 1 km
+Value: 3 => 1 km to 1.5 km
+Value: 4 => 1.5 km to 2 km
+Value: 5 => 2 to 2.5 km
+Value: 6 => 2.5 to 3 km
+Value: 7 => 3 to 3.5 km
+Value: 8 => 3.5 to 4 km
+Value: 9 => 4 to 4.5 km
+Value: 10 =>4.5 to 5 km
+Value: 11=> Greater than 5 km 
+
+Column name: EGRESS DISTANCE
+
+Value: 1 => Less than 0.5 km
+Value: 2 => 0.5 km to 1 km
+Value: 3 => 1 km to 1.5 km
+Value: 4 => 1.5 km to 2 km
+Value: 5 => 2 to 2.5 km
+Value: 6 => 2.5 to 3 km
+Value: 7 => 3 to 3.5 km
+Value: 8 => 3.5 to 4 km
+Value: 9 => 4 to 4.5 km
+Value: 10 =>4.5 to 5 km
+Value: 11=> Greater than 5 km 
+
+Column name: BICYCLE
+
+Value: 1 => Doesn't use for Access and Egress
+Value: 2 => Uses for Access trip
+Value: 3 => Uses for both Access and Egress
+Value: 4 => Uses for Egress trip only 
+
+
+
