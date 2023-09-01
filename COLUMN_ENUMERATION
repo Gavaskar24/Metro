@@ -1,0 +1,13 @@
+ENUMERATION OF DATA COLUMNS:
+
+Column name: DESTINATION_TYPE
+Value: 1 => Work
+Value: 2 => School
+Value: 3 => Friends/Relatives Place
+Value: 4 => Social/Religious Place
+Value: 5 => Home
+Value: 6 => Shopping place
+Value: 7 => Other
+Value: 8 => Restaurant
+
+Column name:
