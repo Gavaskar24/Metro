@@ -10,16 +10,27 @@ Value: 6 => Social/Religious Place
 Value: 7 => Friends/ Relative's place
 Value: 8 => Other
 
-Column name: ORIGIN
+Column name: ACCESS
+Value: 1 => Walk
+Value: 2 => Bicycle
+Value: 3 => Two-Whheeler
+Value: 4 => Car
+Value: 5 => Auto Rickshaw
+Value: 6 => Ola/Uber car
+Value: 7 => Rapido/uber moto/Ola App two-wheeler
+Value: 8 => Dropped-off by friends/others
+Value: 9 => Other
 
-Value: 1 => Home
-Value: 2 => Work/Bussiness
-Value: 3 => School/College
-Value: 4 => Shopping
-Value: 5 => Restaurant
-Value: 6 => Social/Religious Place
-Value: 7 => Friends/ Relative's place
-Value: 8 => Other
+Column name: EGRESS
+Value: 1 => Walk
+Value: 2 => Bicycle
+Value: 3 => Two-Whheeler
+Value: 4 => Car
+Value: 5 => Auto Rickshaw
+Value: 6 => Ola/Uber car
+Value: 7 => Rapido/uber moto/Ola App two-wheeler
+Value: 8 => Dropped-off by friends/others
+Value: 9 => Other
 
 Column name: TRIP
 
@@ -30,7 +41,7 @@ Value: 4 => Bus1+Metro+Bus2
 Value: 5 => Metro1+Bus+Metro2
 Value: 0 => Other
 
-Column name: ACCESS DISTANCE
+Column name:ACCESS DISTANCE
 
 Value: 1 => Less than 0.5 km
 Value: 2 => 0.5 km to 1 km
@@ -44,7 +55,7 @@ Value: 9 => 4 to 4.5 km
 Value: 10 =>4.5 to 5 km
 Value: 11=> Greater than 5 km 
 
-Column name: EGRESS DISTANCE
+Column name:EGRESS DISTANCE
 
 Value: 1 => Less than 0.5 km
 Value: 2 => 0.5 km to 1 km
@@ -65,5 +76,12 @@ Value: 2 => Uses for Access trip
 Value: 3 => Uses for both Access and Egress
 Value: 4 => Uses for Egress trip only 
 
+Column name: AGE_NEW
+
+Value: 1 => 18-25 yrs
+Value: 2 => 26-35 yrs
+Value: 3 => 36-45 yrs
+Value: 4 => 46-60 yrs
+Value: 5 => >60 yrs
 
 
