@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-df = pd.read_csv("Data2.csv", skiprows=1, header=0)
+df = pd.read_csv("Data1.csv", skiprows=1, header=0)
 
 #Removing unwanted columns
 df=df.drop(df.columns[[0,1,2,3,4,41]],axis=1) 
@@ -41,19 +41,19 @@ df['TWO_WHEELER'] = df['TWO_WHEELER'].fillna(-1).astype(int)
 #Removing unwanted text from few columns
 
 df['O_TYPE'] = df['O_TYPE'].str.extract(r'(\w+)', expand=False)
-df['ACCESS_MODE'] = df['ACCESS_MODE'].str.extract(r'(\w+)', expand=False)
-df['EGRESS_MODE'] = df['EGRESS_MODE'].str.extract(r'(\w+)', expand=False)
+df['ACCESS_MODE'] = df['ACCESS_MODE'].str.replace(r'\(.*\)', '',regex=True)
+df['EGRESS_MODE'] = df['EGRESS_MODE'].str.replace(r'\(.*\)', '',regex=True)
 df['D_TYPE'] = df['D_TYPE'].str.extract(r'(\w+)', expand=False)
 df['ACCESS_DISTANCE'] = df['ACCESS_DISTANCE'].str.replace(r'\(.*\)', '',regex=True)
 df['EGRESS_DISTANCE'] = df['EGRESS_DISTANCE'].str.replace(r'\(.*\)', '',regex=True)
+df['CROWDING'] = df['CROWDING'].str.replace(r'\(.*\)', '',regex=True)
 df['BICYCLE_USE'] = df['BICYCLE_USE'].str.replace(r'\(.*\)', '',regex=True)
-df['PASS'] = df['PASS'].str.extract(r'(\w+)', expand=False)
-df['CROWDING'] = df['CROWDING'].str.extract(r'(\w+)', expand=False)
+df['PASS'] = df['PASS'].str.replace(r'\(.*\)', '',regex=True)
 df['GENDER']=df['GENDER'].str.extract(r'(\w+)', expand=False)
-df['AGE']=df['AGE'].str.extract(r'(\w+)', expand=False)
+df['AGE'] = df['AGE'].str.replace(r'\(.*\)', '',regex=True)
 df['EDUCATION']=df['EDUCATION'].str.extract(r'(\w+)', expand=False)
 df['OCCUPATION']=df['OCCUPATION'].str.extract(r'(\w+)', expand=False)
-df['INCOME']=df['INCOME'].str.extract(r'(\w+)', expand=False)
+df['INCOME'] = df['INCOME'].str.replace(r'\(.*\)', '',regex=True)
 
 df['PARKING'] = df['PARKING'].str.replace(r'\(.*?\)', '', regex=True)
 df['TRIP_SEQUENCE'] = df['TRIP_SEQUENCE'].str.replace(r'\(.*?\)', '',regex=True)
@@ -156,7 +156,71 @@ bicycle_mapping={c: 1+i for i,c in enumerate(bicycle)}
 
 df['BICYCLE']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
 
-#########################################
+#################    AGE     ########################
 
-print(df['PASS'].unique())
+age=['36-45 yrs ', '18-25 yrs ', '26-35 yrs ', '46-60 yrs ', '> 60 yrs ']
+
+df['AGE_NEW']=0
+
+age_mapping={c: 1+i for i,c in enumerate(age)}
+
+df['AGE_NEW']=df['AGE'].map(age_mapping).fillna(0).astype(int)
+
+
+###################################################
+
+# Enumerating GENDER Column
+
+gender=['Female','Male']
+
+df['MALE']=0
+
+gender_mapping={c: i for i,c in enumerate(gender)}
+
+df['MALE']=df['GENDER'].map(gender_mapping).fillna(0).astype(int)
+
+############### ACCESS MODE ####################
+
+access=[ 'Walk ',
+ 'Dropped-off by friends/family members/others ',
+               'Drove and parked a two-Wheeler ',
+                                'Auto Rickshaw ',
+                       'Drove and parked a car ',
+                                 'Ola/Uber car ',
+                                      'Bicycle ',
+                               'Indian railway ',
+         'Rapido/Uber moto/Ola App two-wheeler ']
+
+df['ACCESS']=0
+access_mapping = {org: 1+i for i, org in enumerate(access)}
+
+df['ACCESS']=df['ACCESS_MODE'].map(access_mapping).fillna(0).astype(int)
+
+#######################################################
+
+################# EGRESS MODE #########################
+
+egress=[ 'Walk ',
+ 'Dropped-off by friends/family members/others ',
+               'Drove and parked a two-Wheeler ',
+                                'Auto Rickshaw ',
+                       'Drove and parked a car ',
+                                 'Ola/Uber car ',
+                                      'Bicycle ',
+                               'Indian railway ',
+         'Rapido/Uber moto/Ola App two-wheeler ']
+
+df['EGRESS']=0
+egress_mapping = {org: 1+i for i, org in enumerate(egress)}
+
+df['EGRESS']=df['EGRESS_MODE'].map(egress_mapping).fillna(0).astype(int)
+
+
+
+#######################################################
+
+#Output the df as edited_data
+
+
+
 
