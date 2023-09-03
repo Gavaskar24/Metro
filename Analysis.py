@@ -36,4 +36,8 @@ df1=df[df["DESTINATION"]==1]
 
 fig=px.histogram(df,x='BICYCLE_USE',color="EGRESS_DISTANCE",histnorm='percent',
                  text_auto=True,title="EGRESS DISTANCE VS BICYCLE USE")
-fig.show()
+# fig.show()
+
+df2=df[df["PARKING"]>0]
+
+fig=px.histogram(df2,x="PARKING",color="")
