@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Reading two csv files and combining them together
 
@@ -19,8 +20,20 @@ print("Proportion of sample owning atleast 1 Bicycle:",
       round(len(df[df['N_BICYCLES'] > 0])*100/df.shape[0],2),
         "i.e",len(df[df['N_BICYCLES'] > 0]), "out of ",df.shape[0] )
 
-# Plot some histogram using plotly
 
-import plotly.express as px
-fig = px.histogram(df, x="N_BICYCLES")
+
+df['N_BICYCLES'].value_counts().plot(kind='pie',autopct='%1.1f%%',figsize=(10,10))
+
+# plt.show()
+
+
+fig=px.histogram(df,x='BICYCLE_USE',color='MALE')
+
+# fig.show()
+
+# fig=px.histogram(df,x='ACCESS_DISTANCE',color='BICYCLE_USE',histnorm='percent',text_auto=True)
+df1=df[df["DESTINATION"]==1]
+
+fig=px.histogram(df,x='BICYCLE_USE',color="EGRESS_DISTANCE",histnorm='percent',
+                 text_auto=True,title="EGRESS DISTANCE VS BICYCLE USE")
 fig.show()
