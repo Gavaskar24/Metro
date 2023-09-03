@@ -3,16 +3,31 @@ import numpy as np
 import re
 
 # Read the CSV file
-df = pd.read_csv("Data1.csv", skiprows=1, header=0)
+file_name="Aug_31.csv"
+df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
-df=df.drop(df.columns[[0,1,2,3,4,41]],axis=1) 
-
+if file_name == "Aug_10.csv":
+    df=df.drop(df.columns[[0,1,2,3,39]],axis=1)
+    header=pd.read_csv("Header.csv")
+    df.columns=header.columns
+    df['PARKING']="-1"
+    df['N_BICYCLES'] = df['N_BICYCLES'].str.strip()
+elif file_name=="Aug_14.csv":
+    df=df.drop(df.columns[[0,1,2,3,40]],axis=1)
+    header=pd.read_csv("Header_file.csv")
+    df.columns=header.columns
+    # df['PARKING']="-1"
+    # df['N_BICYCLES'] = df['N_BICYCLES'].str.strip()
+else:
+    df=df.drop(df.columns[[0,1,2,3,4,41]],axis=1)
+    header=pd.read_csv("Header_file.csv")
+    df.columns=header.columns
 #Importing dataframe with header columns
-header=pd.read_csv("Header_file.csv")
+
 
 #Add header to the DataFrame
-df.columns=header.columns
+
 
 
 # Converting columns into most probable datatypes
@@ -27,7 +42,8 @@ df['WT_FIS'] = pd.to_numeric(df['WT_FIS'], errors='coerce', downcast='integer')
 df['WAITING_TIME_SECOND_STOP'] = pd.to_numeric(df['WAITING_TIME_SECOND_STOP'], errors='coerce', downcast='integer')
 df['CARS'] = pd.to_numeric(df['CARS'], errors='coerce', downcast='integer')
 df['TWO_WHEELER'] = pd.to_numeric(df['TWO_WHEELER'], errors='coerce', downcast='integer')
-df['BICYCLES'] = pd.to_numeric(df['BICYCLES'], errors='coerce', downcast='integer')
+
+df['N_BICYCLES'] = pd.to_numeric(df['N_BICYCLES'], errors='coerce', downcast='integer')
 df['OTHERS'] = pd.to_numeric(df['OTHERS'], errors='coerce', downcast='integer')
 
 # NOTE: Here Nan values are replaced by -1
@@ -154,7 +170,7 @@ df['BICYCLE']=0
 
 bicycle_mapping={c: 1+i for i,c in enumerate(bicycle)}
 
-df['BICYCLE']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
+df['BICYCLE_23']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
 
 #################    AGE     ########################
 
@@ -219,7 +235,20 @@ df['EGRESS']=df['EGRESS_MODE'].map(egress_mapping).fillna(0).astype(int)
 
 #######################################################
 
-#Output the df as edited_data
+
+if file_name=="Aug_10.csv":
+    df.to_csv('outputfile_1.csv',index=True)
+
+elif file_name =="Aug_14.csv":
+    df.to_csv('outputfile_2.csv',index=True)
+
+elif file_name=="Aug_22.csv":
+    df.to_csv('outputfile_3.csv',index=True)
+
+else:
+    df.to_csv('outputfile_4.csv',index=True)
+
+
 
 
 
