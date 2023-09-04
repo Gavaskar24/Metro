@@ -1,4 +1,4 @@
-ENUMERATION OF DATA COLUMNS:
+ENUMERATION OF DATA_COLUMNS:
 
 Column name: DESTINATION
 Value: 1 => Home
@@ -7,7 +7,7 @@ Value: 3 => School/College
 Value: 4 => Shopping
 Value: 5 => Restaurant
 Value: 6 => Social/Religious Place
-Value: 7 => Friends/ Relative's place
+Value: 7 => Friends/ Relatives place
 Value: 8 => Other
 
 Column name: ACCESS
@@ -69,12 +69,6 @@ Value: 9 => 4 to 4.5 km
 Value: 10 =>4.5 to 5 km
 Value: 11=> Greater than 5 km 
 
-Column name: BICYCLE
-
-Value: 1 => Doesn't use for Access and Egress
-Value: 2 => Uses for Access trip
-Value: 3 => Uses for both Access and Egress
-Value: 4 => Uses for Egress trip only 
 
 Column name: AGE_NEW
 
@@ -83,5 +77,32 @@ Value: 2 => 26-35 yrs
 Value: 3 => 36-45 yrs
 Value: 4 => 46-60 yrs
 Value: 5 => >60 yrs
+
+
+Column name: RENT_BICYCLE
+
+# Willingness to use public bicycle sharing system
+Value: 1 => For access trip only
+Value: 2 => For egress trip only
+Value: 3 => For both access and egress trips
+Value: 4 => For neither of access and egress trips
+
+
+Column name: PARK
+
+# Willingness to use own bicycle when parking space provided
+Value: 1 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
+Value: 2 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
+Value: 3 => Not applicablre as my trip doesnt invlove home
+Value: 4 => I will not use bicycle 
+
+Column name: MALE
+
+#To represent gender
+
+Value: 1 => Male
+Value: 2 => Female
+Value: 3 => Other
+
 
 

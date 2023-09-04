@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_31.csv"
+file_name="Aug_10.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
@@ -44,6 +44,7 @@ df['CARS'] = pd.to_numeric(df['CARS'], errors='coerce', downcast='integer')
 df['TWO_WHEELER'] = pd.to_numeric(df['TWO_WHEELER'], errors='coerce', downcast='integer')
 
 df['N_BICYCLES'] = pd.to_numeric(df['N_BICYCLES'], errors='coerce', downcast='integer')
+df['N_BICYCLES'] = df['N_BICYCLES'].fillna(-1).astype(int)
 df['OTHERS'] = pd.to_numeric(df['OTHERS'], errors='coerce', downcast='integer')
 
 # NOTE: Here Nan values are replaced by -1
@@ -82,7 +83,7 @@ arr=df['PARKING'].unique()
 
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
-df['PARK']=np.nan
+df['PARK']=-1
 
 #Using the array of arr, convert the strings of column PARKING into integer values 
 # and store then in new column called PARK
@@ -166,11 +167,11 @@ bicycle=['For neither access nor egress trips ',
     'For both access and egress trips ',
                 'For egress trip only ']
 
-df['BICYCLE']=0
+df['RENT_BICYCLE']=0
 
 bicycle_mapping={c: 1+i for i,c in enumerate(bicycle)}
 
-df['BICYCLE_23']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
+df['RENT_BICYCLE']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
 
 #################    AGE     ########################
 
@@ -231,7 +232,7 @@ egress_mapping = {org: 1+i for i, org in enumerate(egress)}
 
 df['EGRESS']=df['EGRESS_MODE'].map(egress_mapping).fillna(0).astype(int)
 
-
+print(df["N_BICYCLES"].unique())
 
 #######################################################
 
