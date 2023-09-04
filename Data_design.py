@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_10.csv"
+file_name="Aug_31.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
@@ -24,6 +24,7 @@ else:
     header=pd.read_csv("Header_file.csv")
     df.columns=header.columns
 #Importing dataframe with header columns
+
 
 
 #Add header to the DataFrame
@@ -79,7 +80,7 @@ df['S_2'] = df['S_2'].str.replace(r'\(.*?\)', '', regex=True)
 df['S_3'] = df['S_3'].str.replace(r'\(.*?\)', '', regex=True)
 
 arr=df['PARKING'].unique()
-
+print(df["GENDER"].unique())
 
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
@@ -133,6 +134,7 @@ df['ORIGIN'] = df['O_TYPE'].map(origin_mapping).fillna(0).astype(int)
 
 #Creating sequence array, considered rest of other sequences as 0
 sequence=['Metro ','Bus + Metro ','Metro + Bus ','Bus1 + Metro + Bus2 ','Metro1 + Bus + Metro2 ']
+
 
 #Initiate new array
 df['TRIP']=0
@@ -237,20 +239,20 @@ print(df["N_BICYCLES"].unique())
 #######################################################
 
 
-if file_name=="Aug_10.csv":
-    df.to_csv('outputfile_1.csv',index=True)
+# if file_name=="Aug_10.csv":
+#     df.to_csv('outputfile_1.csv',index=True)
 
-elif file_name =="Aug_14.csv":
-    df.to_csv('outputfile_2.csv',index=True)
+# elif file_name =="Aug_14.csv":
+#     df.to_csv('outputfile_2.csv',index=True)
 
-elif file_name=="Aug_22.csv":
-    df.to_csv('outputfile_3.csv',index=True)
+# elif file_name=="Aug_22.csv":
+#     df.to_csv('outputfile_3.csv',index=True)
 
-else:
-    df.to_csv('outputfile_4.csv',index=True)
+# else:
+#     df.to_csv('outputfile_4.csv',index=True)
 
 
-
+print(df["ACCESS_MODE"].unique())
 
 
 

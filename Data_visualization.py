@@ -96,3 +96,10 @@ fig.update_traces(marker=dict(size=12,
 # fig.show()
 
 print(df["ACCESS_DISTANCE"].unique())
+
+
+
+
+fig=px.histogram(df,x='N_BICYCLES',color="PARK",histnorm='percent',
+                 text_auto=True,title="PARKING VS BICYCLE USE")
+fig.show()

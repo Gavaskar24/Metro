@@ -10,6 +10,16 @@ Value: 6 => Social/Religious Place
 Value: 7 => Friends/ Relatives place
 Value: 8 => Other
 
+Column name: ORIGIN
+Value: 1 => Home
+Value: 2 => Work/Bussiness
+Value: 3 => School/College
+Value: 4 => Shopping
+Value: 5 => Restaurant
+Value: 6 => Social/Religious Place
+Value: 7 => Friends/ Relatives place
+Value: 8 => Other
+
 Column name: ACCESS
 Value: 1 => Walk
 Value: 2 => Bicycle
