@@ -45,11 +45,11 @@ df['CARS'] = pd.to_numeric(df['CARS'], errors='coerce', downcast='integer')
 df['TWO_WHEELER'] = pd.to_numeric(df['TWO_WHEELER'], errors='coerce', downcast='integer')
 
 df['N_BICYCLES'] = pd.to_numeric(df['N_BICYCLES'], errors='coerce', downcast='integer')
-df['N_BICYCLES'] = df['N_BICYCLES'].fillna(-1).astype(int)
+df['N_BICYCLES'] = df['N_BICYCLES'].fillna(4).astype(int)
 df['OTHERS'] = pd.to_numeric(df['OTHERS'], errors='coerce', downcast='integer')
 
-# NOTE: Here Nan values are replaced by -1
-df['TWO_WHEELER'] = df['TWO_WHEELER'].fillna(-1).astype(int)
+# NOTE: Here Nan values are replaced by 4
+df['TWO_WHEELER'] = df['TWO_WHEELER'].fillna(4).astype(int)
 
 
 
@@ -79,8 +79,8 @@ df['S_1'] = df['S_1'].str.replace(r'\(.*?\)', '', regex=True)
 df['S_2'] = df['S_2'].str.replace(r'\(.*?\)', '', regex=True)
 df['S_3'] = df['S_3'].str.replace(r'\(.*?\)', '', regex=True)
 
-arr=df['PARKING'].unique()
-print(df["GENDER"].unique())
+df=df[df["PARKING"]!='-1']
+arr=df["PARKING"].unique()
 
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
@@ -91,9 +91,12 @@ df['PARK']=-1
 for i in range(len(arr)):
     df.loc[df['PARKING'] == arr[i], 'PARK'] = i+1
 
-# Converting floats to integers in PARK and TWO_WHEELERcolumn
-df['PARK']=df['PARK'].astype(int)
+print(df["PARK"].head(10),df["PARKING"].head(10))
 
+# Converting floats to integers in PARK and TWO_WHEELERcolumn
+# df['PARK']=df['PARK'].astype(int)
+
+# print(df["PARK"].head(10))
 #################################################
 
 
@@ -102,7 +105,8 @@ df['PARK']=df['PARK'].astype(int)
 # and store then in new column called DESTINATION
 
 #Creating destination_types array
-destination_types=['Home','Work','School ','Shopping','Restaurant','Social','Friend','Other']
+destination_types=['Home','Work','School','Shopping','Restaurant','Social','Friend','Other']
+
 
 #creating a dictionary to map destination_type to integers
 destination_mapping = {dest: 1+i for i, dest in enumerate(destination_types)}
@@ -119,12 +123,12 @@ df['DESTINATION'] = df['D_TYPE'].map(destination_mapping).fillna(0).astype(int)
 #Creating destination_types array
 
 
-origin_types=['Home','Work','School ','Shopping','Restaurant','Social','Friend','Other']
+origin_types=['Home','Work', 'School','Shopping','Restaurant','Social','Friend','Other']
 
 #creating a dictionary to map destination_type to integers
 origin_mapping = {org: 1+i for i, org in enumerate(origin_types)}
 
-# Map 'D_TYPE' column to integers and fill unmatched types with -1
+# Map 'O_TYPE' column to integers and fill unmatched types with -1
 df['ORIGIN'] = df['O_TYPE'].map(origin_mapping).fillna(0).astype(int)
 
 ###################################################
@@ -239,20 +243,21 @@ print(df["N_BICYCLES"].unique())
 #######################################################
 
 
-# if file_name=="Aug_10.csv":
-#     df.to_csv('outputfile_1.csv',index=True)
+if file_name=="Aug_10.csv":
+    df.to_csv('outputfile_1.csv',index=True)
 
-# elif file_name =="Aug_14.csv":
-#     df.to_csv('outputfile_2.csv',index=True)
+elif file_name =="Aug_14.csv":
+    df.to_csv('outputfile_2.csv',index=True)
 
-# elif file_name=="Aug_22.csv":
-#     df.to_csv('outputfile_3.csv',index=True)
+elif file_name=="Aug_22.csv":
+    df.to_csv('outputfile_3.csv',index=True)
 
-# else:
-#     df.to_csv('outputfile_4.csv',index=True)
+else:
+    df.to_csv('outputfile_4.csv',index=True)
+
+print(df["PARKING"].unique())
+print(df["PARK"].unique())
 
 
-print(df["ACCESS_MODE"].unique())
 
-
-
+df.to_csv('parking.csv',index=True)

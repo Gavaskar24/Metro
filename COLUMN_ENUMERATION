@@ -51,7 +51,7 @@ Value: 4 => Bus1+Metro+Bus2
 Value: 5 => Metro1+Bus+Metro2
 Value: 0 => Other
 
-Column name:ACCESS DISTANCE
+Column name:ACCESS DIS
 
 Value: 1 => Less than 0.5 km
 Value: 2 => 0.5 km to 1 km
@@ -101,10 +101,10 @@ Value: 4 => For neither of access and egress trips
 Column name: PARK
 
 # Willingness to use own bicycle when parking space provided
-Value: 1 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
-Value: 2 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
-Value: 3 => Not applicablre as my trip doesnt invlove home
-Value: 4 => I will not use bicycle 
+Value: 4 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
+Value: 3 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
+Value: 2 => Not applicablre as my trip doesnt invlove home
+Value: 1 => I will not use bicycle 
 
 Column name: MALE
 
