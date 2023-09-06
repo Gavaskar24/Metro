@@ -11,11 +11,11 @@ df2=pd.read_csv('outputfile_2.csv')
 df3=pd.read_csv('outputfile_3.csv')
 df4=pd.read_csv('outputfile_4.csv')
 
-df_parking=pd.read_csv('parking.csv')
+# df_parking=pd.read_csv('parking.csv')
 df=pd.concat([df1,df2,df3,df4])
+df_park=pd.concat([df2,df3,df4])
 df.to_csv('combined.csv')
-
-# print(df.columns)
+df_park.to_csv('parking.csv')
 
 
 #percentage of rows with MALE==1 in df
@@ -326,3 +326,51 @@ df.to_csv('combined.csv')
 # cross_tab.to_csv('Egress_distance vs Parking for respondents with home as destination and  owning bicycle.csv')
 
 # ############################################
+
+
+######### PARKING , MALE vs female combined plot #########################
+
+df1=df[df["DESTINATION"]==1]
+df1=df1[df1["MALE"]==1]
+df1=df1[df1["N_BICYCLES"]>0]
+
+df2=df[df["DESTINATION"]==1]
+df2=df2[df2["MALE"]==0]
+df2=df2[df2["N_BICYCLES"]>0]
+
+df2.loc[df2["PARK"]==4,"PARK"]=3
+df1.loc[df1["PARK"] ==4,"PARK"]=3
+
+counts1, bins1 = np.histogram(df1["PARK"]) 
+counts1 = (100*counts1) / np.sum(counts1)
+
+# Plot 2 data 
+counts2, bins2 = np.histogram(df2["PARK"])
+counts2 = (100*counts2) / np.sum(counts2)
+
+bar_width=0.5
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+
+# Get bins for each histogram
+bins1 = np.arange(len(counts1)) 
+bins2 = bins1 + bar_width
+
+# Plot 1
+ax.bar(bins1, counts1, width=bar_width, edgecolor='black', alpha=0.5, label='Male')
+
+# Plot 2  
+ax.bar(bins2, counts2, width=bar_width, edgecolor='black', alpha=0.5, label='Female')
+
+
+
+ax.set_title('Willingness to use bicycle when parking space is provided \n with home as destination')
+# ax.set_xlabel('Usage')
+ax.set_ylabel('Percentage')
+ax.set_xticks([0.2,5.2,9.3],['Present conditions','Cycle lane','Will not use'])
+
+ax.legend()
+plt.tight_layout()
+plt.show()
+

@@ -101,10 +101,10 @@ Value: 4 => For neither of access and egress trips
 Column name: PARK
 
 # Willingness to use own bicycle when parking space provided
-Value: 4 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
-Value: 3 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
-Value: 2 => Not applicablre as my trip doesnt invlove home
-Value: 1 => I will not use bicycle 
+Value: 1 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
+Value: 2 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
+Value: 4 => Not applicable as my trip doesn't invlove home
+Value: 3 => I will not use bicycle 
 
 Column name: MALE
 

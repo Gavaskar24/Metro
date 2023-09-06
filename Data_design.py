@@ -11,7 +11,10 @@ if file_name == "Aug_10.csv":
     df=df.drop(df.columns[[0,1,2,3,39]],axis=1)
     header=pd.read_csv("Header.csv")
     df.columns=header.columns
-    df['PARKING']="-1"
+    df['PARKING']='0'  ## Note: while considering parking study do not load Aug_10.csv file,
+                       ## I just created another column PARKING with all values as 0 
+                       # inorder to load it for other studies
+
     df['N_BICYCLES'] = df['N_BICYCLES'].str.strip()
 elif file_name=="Aug_14.csv":
     df=df.drop(df.columns[[0,1,2,3,40]],axis=1)
@@ -79,9 +82,12 @@ df['S_1'] = df['S_1'].str.replace(r'\(.*?\)', '', regex=True)
 df['S_2'] = df['S_2'].str.replace(r'\(.*?\)', '', regex=True)
 df['S_3'] = df['S_3'].str.replace(r'\(.*?\)', '', regex=True)
 
-df=df[df["PARKING"]!='-1']
-arr=df["PARKING"].unique()
-
+# print(df.columns)
+arr=[      'Yes, I own a bicycle or I will buy a bicycle, and use it under current travel conditions between my home and the metro station. .',
+ 'Yes, I own a bicycle or I will buy a bicycle, and use it if a safe bicycling path is available between my home and the metro station. .',
+                                                                                                         'No, I will not use a bicycle. .',
+                                                                             'Not Applicable - because neither ends of my trip is home. .']
+print("PARKING",arr)
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
 df['PARK']=-1
@@ -89,14 +95,16 @@ df['PARK']=-1
 #Using the array of arr, convert the strings of column PARKING into integer values 
 # and store then in new column called PARK
 for i in range(len(arr)):
-    df.loc[df['PARKING'] == arr[i], 'PARK'] = i+1
+    df.loc[df['PARKING'] == str(arr[i]), 'PARK'] = i+1
 
-print(df["PARK"].head(10),df["PARKING"].head(10))
+df.to_csv("parking.csv")
+
+# print(df["PARK"].head(10),df["PARKING"].head(10))
 
 # Converting floats to integers in PARK and TWO_WHEELERcolumn
 # df['PARK']=df['PARK'].astype(int)
 
-# print(df["PARK"].head(10))
+# print("PARK",df["PARK"].unique())
 #################################################
 
 
@@ -238,7 +246,7 @@ egress_mapping = {org: 1+i for i, org in enumerate(egress)}
 
 df['EGRESS']=df['EGRESS_MODE'].map(egress_mapping).fillna(0).astype(int)
 
-print(df["N_BICYCLES"].unique())
+
 
 #######################################################
 
@@ -254,10 +262,3 @@ elif file_name=="Aug_22.csv":
 
 else:
     df.to_csv('outputfile_4.csv',index=True)
-
-print(df["PARKING"].unique())
-print(df["PARK"].unique())
-
-
-
-df.to_csv('parking.csv',index=True)
