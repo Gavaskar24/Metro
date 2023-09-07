@@ -13,9 +13,9 @@ df4=pd.read_csv('outputfile_4.csv')
 
 # df_parking=pd.read_csv('parking.csv')
 df=pd.concat([df1,df2,df3,df4])
-df_park=pd.concat([df2,df3,df4])
-df.to_csv('combined.csv')
-df_park.to_csv('parking.csv')
+# df_park=pd.concat([df2,df3,df4])
+# df.to_csv('combined.csv')
+# df_park.to_csv('parking.csv')
 
 
 #percentage of rows with MALE==1 in df
@@ -184,7 +184,7 @@ df_park.to_csv('parking.csv')
 
 # print(df1["RENT_BICYCLE"].unique())
 
-# counts, bins = np.histogram(df1['PARK'], bins=4)
+# counts, bins = np.histogram(df1['RENT_BICYCLE'], bins=4)
 
 # plt.hist(df1["PARK"],bins=4,edgecolor='black',weights=np.ones(len(df1))/len(df1),
 #                                       rwidth=1.5,histtype='bar')
@@ -330,47 +330,159 @@ df_park.to_csv('parking.csv')
 
 ######### PARKING , MALE vs female combined plot #########################
 
-df1=df[df["DESTINATION"]==1]
-df1=df1[df1["MALE"]==1]
-df1=df1[df1["N_BICYCLES"]>0]
+# df1=df[df["DESTINATION"]==1]
+# df1=df1[df1["MALE"]==1]
+# df1=df1[df1["N_BICYCLES"]==0]
 
-df2=df[df["DESTINATION"]==1]
-df2=df2[df2["MALE"]==0]
-df2=df2[df2["N_BICYCLES"]>0]
+# df2=df[df["DESTINATION"]==1]
+# df2=df2[df2["MALE"]==0]
+# df2=df2[df2["N_BICYCLES"]==0]
 
-df2.loc[df2["PARK"]==4,"PARK"]=3
-df1.loc[df1["PARK"] ==4,"PARK"]=3
+# df2.loc[df2["PARK"]==4,"PARK"]=3
+# df1.loc[df1["PARK"] ==4,"PARK"]=3
 
-counts1, bins1 = np.histogram(df1["PARK"]) 
-counts1 = (100*counts1) / np.sum(counts1)
+# counts1, bins1 = np.histogram(df1["PARK"]) 
+# counts1 = (100*counts1) / np.sum(counts1)
 
-# Plot 2 data 
-counts2, bins2 = np.histogram(df2["PARK"])
-counts2 = (100*counts2) / np.sum(counts2)
+# # Plot 2 data 
+# counts2, bins2 = np.histogram(df2["PARK"])
+# counts2 = (100*counts2) / np.sum(counts2)
 
-bar_width=0.5
-import matplotlib.pyplot as plt
+# bar_width=0.5
+# import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots()
+# fig, ax = plt.subplots()
 
-# Get bins for each histogram
-bins1 = np.arange(len(counts1)) 
-bins2 = bins1 + bar_width
+# # Get bins for each histogram
+# bins1 = np.arange(len(counts1)) 
+# bins2 = bins1 + bar_width
 
-# Plot 1
-ax.bar(bins1, counts1, width=bar_width, edgecolor='black', alpha=0.5, label='Male')
+# # Plot 1
+# ax.bar(bins1, counts1, width=bar_width, edgecolor='black', alpha=0.5, label='Male')
 
-# Plot 2  
-ax.bar(bins2, counts2, width=bar_width, edgecolor='black', alpha=0.5, label='Female')
+# # Plot 2  
+# ax.bar(bins2, counts2, width=bar_width, edgecolor='black', alpha=0.5, label='Female')
 
 
 
-ax.set_title('Willingness to use bicycle when parking space is provided \n with home as destination')
-# ax.set_xlabel('Usage')
-ax.set_ylabel('Percentage')
-ax.set_xticks([0.2,5.2,9.3],['Present conditions','Cycle lane','Will not use'])
+# ax.set_title('Willingness to use bicycle when parking space is provided \n with home as destination')
+# # ax.set_xlabel('Usage')
+# ax.set_ylabel('Percentage')
+# ax.set_xticks([0.2,5.2,9.3],['Present conditions','Cycle lane','Will not use'])
 
-ax.legend()
-plt.tight_layout()
+# ax.legend()
+# plt.tight_layout()
+# plt.show()
+
+# #count of different values in column PARK
+# print(df1["PARK"].value_counts())
+# print(df2["PARK"].value_counts())
+
+
+############### Willingness to use rented bicycle ######################
+
+#Histogram for different vales of column RENT_BICYCLE
+# df=df[df["MALE"]==0]
+# counts, bins = np.histogram(df['RENT_BICYCLE'], bins=4)
+# counts = (100*counts)/np.sum(counts)
+# plt.hist(df["RENT_BICYCLE"],bins=4,edgecolor='black',weights=np.ones(len(df))/len(df),
+#                                         rwidth=1.5,histtype='bar')  
+# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# for rect, count in zip(plt.gca().patches, counts):
+#     height = rect.get_height()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, round(count,2), ha='center', va='bottom')
+# plt.xlabel('Willingness to use rented bicycle')
+# plt.ylabel('Percentage')
+# plt.title("Willingness to use rented bicycle")  
+# plt.xticks([1.3,2.1,2.9,3.7],['Neither trips','Access only','Both trips','Egress only'])
+# plt.show()
+
+# print(df["RENT_BICYCLE"].unique())
+# print(df["BICYCLE_USE"].unique())
+
+# df.to_csv('check.csv')
+
+############# Access times variation #########################
+
+# df=df[df["EGRESS_TIME"]<60]
+# df=df[df["ACCESS_TIME"]<60]
+# bins = [0,10,20,30,40,50]
+# labels = ['1-10','11-20','21-30','31-40','41-50']
+
+# # histogram of column ACCESS_TIME using bins and labels
+# plt.hist(df["EGRESS_TIME"],bins=bins,edgecolor='black',weights=np.ones(len(df))/len(df),
+#                                         rwidth=1.5,histtype='bar')  
+# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# plt.xlabel('Egress time (minutes)')
+# plt.ylabel('Percentage')
+# plt.title("Egress time variation")
+# plt.xticks([4,15,25,35,46],['1-10','11-20','21-30','31-40','41-50'])
+# plt.show()
+
+#########################################################
+
+########### Crosstab Access time vs Rent bicycle #####################
+
+
+# df=df[df["EGRESS_TIME"]<60]
+# df=df[df["ACCESS_TIME"]<60]
+# # df=df[df["MALE"]==1]
+# df=df[df["N_BICYCLES"]>0]
+
+# bins = [0,10,20,30,40,50]
+# labels = ['1-10','11-20','21-30','31-40','41-50']
+
+# # Using the labels and bins above construct crosstabs for ACCESS_TIME and RENT_BICYCLE
+# cross_tab=pd.crosstab(df["ACCESS_TIME"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# cross_tab=np.round(cross_tab,decimals=2)
+# print(cross_tab)
+
+# #Plotting the crosstabs
+# bar_width=8
+# cross_tab.plot(kind='bar',stacked=True,width=bar_width) 
+# plt.xlabel('Access time (minutes)')
+# plt.ylabel('Percentage')
+# plt.title("Access time vs Rent bicycle")
+# plt.xticks([x + bar_width/2 for x in [4,15,25,35,46]], 
+#            ['1-10','11-20','21-30','31-40','41-50'])
+# legend_labels=['Only Access','Only Egress','For Both','For Neither']
+# plt.legend(legend_labels)
+# plt.xticks(rotation=0)
+# plt.show()
+
+################### Only Crosstabulation #########################
+
+df=df[df["EGRESS_TIME"]<60]
+df=df[df["ACCESS_TIME"]<60]
+
+#Bin the values of ACCESS_TIME into groups of 10 minutes and do cross tabulation with RENT_BICYCLE
+# bins = [0,10,20,30,40,50]
+# labels = ['1-10','11-20','21-30','31-40','41-50']
+# df['ACCESS_TIME_BINNED'] = pd.cut(df['EGRESS_TIME'], bins=bins, labels=labels)
+# cross_tab=pd.crosstab(df["ACCESS_TIME_BINNED"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# cross_tab=np.round(cross_tab,decimals=2)
+# print(cross_tab)
+
+# #Export crosstab to csv file
+# cross_tab.to_csv('Egress time vs Rent bicycle.csv')
+
+###########################################################
+
+#crosstabulation between columns ORIGIN and RENT_BICYCLE
+cross_tab=pd.crosstab(df["ORIGIN"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+#rounding the values in cross_tab to 2 decimals
+cross_tab=np.round(cross_tab,decimals=2)
+print(cross_tab)
+# cross_tab=cross_tab.iloc[:-1,:-1] 0
+cross_tab.plot(kind='bar',stacked=True)
+plt.xlabel('Origin')
+plt.ylabel('Percentage')
+plt.title("Origin vs Rent bicycle")
+plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55],
+           ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
+legend_labels=['Only Access','Only Egress','For Both','For Neither']
+plt.legend(legend_labels)
+plt.xticks(rotation=0)
 plt.show()
-
