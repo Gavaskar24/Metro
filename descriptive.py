@@ -12,11 +12,11 @@ df3=pd.read_csv('outputfile_3.csv')
 df4=pd.read_csv('outputfile_4.csv')
 
 # df_parking=pd.read_csv('parking.csv')
-df=pd.concat([df1,df2,df3,df4])
-# df_park=pd.concat([df2,df3,df4])
-# df.to_csv('combined.csv')
-# df_park.to_csv('parking.csv')
 
+# df=pd.concat([df1,df2,df3,df4])
+df_park=pd.concat([df2,df3,df4])
+# df.to_csv('combined.csv')
+df_park.to_csv('parking.csv')
 
 #percentage of rows with MALE==1 in df
 
@@ -304,8 +304,8 @@ df=pd.concat([df1,df2,df3,df4])
 ############## PARKING crosstab #####################
 # df=df_parking
 # # df=df[df["MALE"]==1]
-# df=df[df["N_BICYCLES"]==0]
-# df=df[(df["DESTINATION"]==1) ]
+# # df=df[df["N_BICYCLES"]==0]
+# # df=df[(df["DESTINATION"]==1) ]
 
 # cross_tab=pd.crosstab(df["ACCESS_DIS"],df["PARK"],margins=True,normalize='index')*100
 # #rounding the values in cross_tab to 2 decimals
@@ -453,8 +453,8 @@ df=pd.concat([df1,df2,df3,df4])
 
 ################### Only Crosstabulation #########################
 
-df=df[df["EGRESS_TIME"]<60]
-df=df[df["ACCESS_TIME"]<60]
+# df=df[df["EGRESS_TIME"]<60]
+# df=df[df["ACCESS_TIME"]<60]
 
 #Bin the values of ACCESS_TIME into groups of 10 minutes and do cross tabulation with RENT_BICYCLE
 # bins = [0,10,20,30,40,50]
@@ -470,8 +470,36 @@ df=df[df["ACCESS_TIME"]<60]
 
 ###########################################################
 
-#crosstabulation between columns ORIGIN and RENT_BICYCLE
-cross_tab=pd.crosstab(df["ORIGIN"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+##############  crosstabulation between columns ORIGIN and RENT_BICYCLE ###############
+# cross_tab=pd.crosstab(df["ORIGIN"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# cross_tab=np.round(cross_tab,decimals=2)
+# print(cross_tab)
+# # cross_tab=cross_tab.iloc[:-1,:-1] 0
+# cross_tab.plot(kind='bar',stacked=True)
+# plt.xlabel('Origin')
+# plt.ylabel('Percentage')
+# plt.title("Origin vs Rent bicycle")
+# plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55],
+#            ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
+# legend_labels=['Only Access','Only Egress','For Both','For Neither']
+# plt.legend(legend_labels)
+# plt.xticks(rotation=0)
+# plt.show()
+
+#############################
+
+######################## crosstabulation between ACEESS_DISTANCE and df["PARK"]=1 and df["PARK"]=2
+
+df=df_park
+
+# df=df[df["EGRESS_TIME"]<60]
+# df=df[df["ACCESS_TIME"]<60]
+df=df[df["ORIGIN"]==1]
+
+df=df[df["PARK"]<3]
+
+cross_tab=pd.crosstab(df["ACCESS_DISTANCE"],df["PARK"],margins=True,normalize='index')*100
 #rounding the values in cross_tab to 2 decimals
 cross_tab=np.round(cross_tab,decimals=2)
 print(cross_tab)
@@ -479,10 +507,12 @@ print(cross_tab)
 cross_tab.plot(kind='bar',stacked=True)
 plt.xlabel('Origin')
 plt.ylabel('Percentage')
-plt.title("Origin vs Rent bicycle")
-plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55],
-           ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
-legend_labels=['Only Access','Only Egress','For Both','For Neither']
-plt.legend(legend_labels)
-plt.xticks(rotation=0)
+# plt.title("Origin vs Rent bicycle")
+# plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55],
+#            ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
+# legend_labels=['Only Access','Only Egress','For Both','For Neither']
+# plt.legend(legend_labels)
+# plt.xticks(rotation=0)
 plt.show()
+
+# cross_tab.to_csv('append.csv')
