@@ -92,10 +92,10 @@ Value: 5 => >60 yrs
 Column name: RENT_BICYCLE
 
 # Willingness to use public bicycle sharing system
-Value: 1 => For access trip only
-Value: 2 => For egress trip only
+Value: 1 => For neither access nor egress
+Value: 2 => For access trip only
 Value: 3 => For both access and egress trips
-Value: 4 => For neither of access and egress trips
+Value: 4 => For egress trip only
 
 
 Column name: PARK
