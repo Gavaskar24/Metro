@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_31.csv"
+file_name="Aug_10.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
@@ -158,6 +158,19 @@ for i, value in enumerate(sequence, start=1):
 ###################################################
 
 
+############# AGE #####################################
+df['AGE_C']=0
+my_dict={'> 60 yrs ': 5, '36-45yrs ': 3, '36-45 yrs ': 3, '18-25 yrs ': 1, 
+         '26-35 yrs ': 2, '18-25yrs ': 1, '26-35yrs ': 2, '46-60 yrs ': 4, '46-60yrs ': 4}
+
+#Iterate through the dictionary and replace the values in AGE column
+for key, value in my_dict.items():
+    df.loc[df['AGE'] == key, 'AGE_C'] = value
+
+##########################################################
+
+
+
 ###############  ACCESS_DISTANCE and EGRESS_DISTANCE ##########################
 access=['< 0.5 km ', '1.5 km to 2 km ',    '0.5 to 1 km ', '1 km to 1.5 km ',
  '3 km to 3.5 km ', '4.5 km to 5 km ', '2.5 km to 3 km ',         '> 5 km ',
@@ -174,6 +187,8 @@ df['EGRESS_DIS'] = df['EGRESS_DISTANCE'].map(access_mapping).fillna(0).astype(in
 
 ########################################################
 
+
+
 ################# BICYCLE USE ####################
 
 bicycle=['For neither access nor egress trips ',
@@ -187,18 +202,8 @@ bicycle_mapping={c: 1+i for i,c in enumerate(bicycle)}
 
 df['RENT_BICYCLE']=df['BICYCLE_USE'].map(bicycle_mapping).fillna(0).astype(int)
 
-#################    AGE     ########################
+########################################################
 
-age=['36-45 yrs ', '18-25 yrs ', '26-35 yrs ', '46-60 yrs ', '> 60 yrs ']
-
-df['AGE_NEW']=0
-
-age_mapping={c: 1+i for i,c in enumerate(age)}
-
-df['AGE_NEW']=df['AGE'].map(age_mapping).fillna(0).astype(int)
-
-
-###################################################
 
 # Enumerating GENDER Column
 
@@ -262,3 +267,5 @@ elif file_name=="Aug_22.csv":
 
 else:
     df.to_csv('outputfile_4.csv',index=True)
+
+

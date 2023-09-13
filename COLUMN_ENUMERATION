@@ -80,7 +80,7 @@ Value: 10 =>4.5 to 5 km
 Value: 11=> Greater than 5 km 
 
 
-Column name: AGE_NEW
+Column name: AGE_C      (Age category)
 
 Value: 1 => 18-25 yrs
 Value: 2 => 26-35 yrs
@@ -103,8 +103,8 @@ Column name: PARK
 # Willingness to use own bicycle when parking space provided
 Value: 1 => yes, I will use my own(or buy and use ) bicycle under current travel conditions
 Value: 2 => yes, I will use my own(or buy and use ) bicycle if safe bicycle path  is provided
-Value: 4 => Not applicable as my trip doesn't invlove home
 Value: 3 => I will not use bicycle 
+Value: 4 => Not applicable as my trip doesn't invlove home
 
 Column name: MALE
 
@@ -114,5 +114,19 @@ Value: 1 => Male
 Value: 2 => Female
 Value: 3 => Other
 
+ACCESS MODE
+
+Value: 1 => Walk
+Value: 2 => Bicycle
+Value: 3 => Drove and parked a Two wheeler
+Value: 4 => Drove and parked a car
+Value: 5 => Auto Rickshaw
+Value: 6 => Ola/Uber car
+Value: 7 => Rapido/ uber moto/ Ola App two-wheeler
+Value: 8 => Dropped off by friends/family members/others
+Value: 9 => Office bus
+Value: 10 =>office car
+Value: 11=> Train
+Value: 12 => Bus
 
 
