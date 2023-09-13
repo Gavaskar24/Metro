@@ -20,7 +20,7 @@ df=pd.concat([df1,df2,df3,df4])
 
 #percentage of rows with MALE==1 in df
 
-print(df['EGRESS_MODE'].unique())
+
 
 ########################   GENDER DISTRIBUTION #################
 
@@ -532,4 +532,25 @@ print(df['EGRESS_MODE'].unique())
 # print(cross_tab)
 
 ########################################
+
+############ ACCESS MODES ######################
+
+#Lets draw a Bar chart  of ACCESS_M column
+df=df.sort_values(by=['ACCESS_M'])
+df=df[df["ACCESS_M"]>0]
+counts, bins = np.histogram(df['ACCESS_M'], bins=12)
+
+plt.hist(df["ACCESS_M"],bins=12,edgecolor='black',weights=np.ones(len(df)),
+                                        rwidth=1.5,histtype='bar')
+plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+for rect, count in zip(plt.gca().patches, counts):
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom')
+plt.xlabel('Access mode')
+plt.ylabel('Percentage')
+plt.title("Access mode variation")
+# plt.xticks([1.3,2.1,2.9,3.7],['Walk','Bicycle','Public transport','Other'])
+plt.show()
+
+
 

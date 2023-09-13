@@ -24,23 +24,24 @@ my_dict={'Walk':1,'Auto Rickshaw':5,'Two-Wheeler':3,'Dropped-off by friends/othe
          'Company shuttle':9,'Office cab':10,'Company bus':9,'Company cab':10,
          'Office Bus':9,'Railway train':11,'Office metro feeder':9,
          'Dropped-off by friends/family members/others':8,'Drove and parked a two-Wheeler':3,
-         'Drove and parked a car':4,'Indian railway':11}
+         'Drove and parked a car':4,'Indian railway':11,'Auto Rickshaw ':5, 'Walk ':1, 'Dropped-off by friends/others ':8 ,
+         'Two-Wheeler ':3,'Ola/Uber car ':6, 'They will travel by normal train in yeshwantpur ':11, 'Car ':4,
+        'Bicycle ':2, 'Rapido/Uber moto/Ola App two-wheeler ':7, 'Company cab':10, 'Bus':12,
+        'Metro feeder':9, 'Shuttle bus':9, 'Company vehicle ':10, 'Office cab':10
+        'Rapido/Uber Moto/Ola two-wheeler ':7, 'Nil':0, 'Shuttle':10,
+        'Their own two wheeler ':3, 'Bike':3, 'Own vehicle ':3, '2 wheller':3, 'Ksrtc':12,
+        'Cycle':2, 'Their own bik':3, 'Pick up':8, 'Two wheeler ':3, 'Office vehicle':10,
+        "He should look how he should travel correnty he don't know ":0, 'Train':11,
+        'College bus':12, 'Dropped-off by friends/others':8, 'Own bike':3, 'Pick up ':8,
+        'Bike ':3, 'Company shuttle bus':9, 'Office shuttle ':9,
+        'Drove and parked a two-Wheeler ':3, 'Office shuttle bus':9, 'Office bus':9,
+        'Dropped-off by friends/family members/others ':8, 'Ksrtc bus':12,
+        'Drove and parked a car ':4, 'Yulu':7, 'Rapido/uber moto/Ola App two-wheeler ':7,
+        'Office shuttle bus ':9}
 
 
-list2=['Auto Rickshaw ' 'Walk ' 'Dropped-off by friends/others ' 'Two-Wheeler '
- 'Ola/Uber car ' 'They will travel by normal train in yeshwantpur ' 'Car '
- 'Bicycle ' 'Rapido/Uber moto/Ola App two-wheeler ' 'Company cab' 'Bus'
- 'Metro feeder' 'Shuttle bus' 'Company vehicle ' 'Office cab'
- 'Rapido/Uber Moto/Ola two-wheeler ' 'Nil' 'Shuttle'
- 'Their own two wheeler ' 'Bike' 'Own vehicle ' '2 wheller' 'Ksrtc'
- 'Cycle' 'Their own bik' 'Pick up' 'Two wheeler ' 'Office vehicle'
- "He should look how he should travel correnty he don't know " 'Train'
- 'College bus' 'Dropped-off by friends/others' 'Own bike' 'Pick up '
- 'Bike ' 'Company shuttle bus' 'Office shuttle '
- 'Drove and parked a two-Wheeler ' 'Office shuttle bus' 'Office bus'
- 'Dropped-off by friends/family members/others ' 'Ksrtc bus'
- 'Drove and parked a car ' 'Yulu' 'Rapido/uber moto/Ola App two-wheeler '
- 'Office shuttle bus ']
+list2=[]
 
 #Adding list2 to dictionary
+
 
