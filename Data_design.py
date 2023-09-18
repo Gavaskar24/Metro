@@ -7,6 +7,7 @@ file_name="Aug_31.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
+
 if file_name == "Aug_10.csv":
     df=df.drop(df.columns[[0,1,2,3,39]],axis=1)
     header=pd.read_csv("Header.csv")
@@ -32,7 +33,13 @@ else:
 
 #Add header to the DataFrame
 
-
+df['RENT']=0
+if file_name=="Aug_10.csv" or file_name=="Aug_14.csv":
+    df['RENT']=10
+elif file_name=="Aug_22.csv":
+    df['RENT']=5
+else:
+    df['RENT']=15
 
 # Converting columns into most probable datatypes
 df=df.convert_dtypes()

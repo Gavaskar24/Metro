@@ -536,21 +536,97 @@ df=pd.concat([df1,df2,df3,df4])
 ############ ACCESS MODES ######################
 
 #Lets draw a Bar chart  of ACCESS_M column
-df=df.sort_values(by=['ACCESS_M'])
-df=df[df["ACCESS_M"]>0]
-counts, bins = np.histogram(df['ACCESS_M'], bins=12)
+# df=df.sort_values(by=['ACCESS_M'])
+# df=df[df["ACCESS_M"]>0]
+# counts, bins = np.histogram(df['ACCESS_M'], bins=12)
 
-plt.hist(df["ACCESS_M"],bins=12,edgecolor='black',weights=np.ones(len(df)),
-                                        rwidth=1.5,histtype='bar')
-plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
-for rect, count in zip(plt.gca().patches, counts):
-    height = rect.get_height()
-    plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom')
-plt.xlabel('Access mode')
-plt.ylabel('Percentage')
-plt.title("Access mode variation")
-# plt.xticks([1.3,2.1,2.9,3.7],['Walk','Bicycle','Public transport','Other'])
+# plt.hist(df["ACCESS_M"],bins=12,edgecolor='black',weights=np.ones(len(df)),
+#                                         rwidth=1.5,histtype='bar')
+# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# for rect, count in zip(plt.gca().patches, counts):
+#     height = rect.get_height()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom')
+# plt.xlabel('Access mode')
+# plt.ylabel('Percentage')
+# plt.title("Access mode variation")
+# # plt.xticks([1.3,2.1,2.9,3.7],['Walk','Bicycle','Public transport','Other'])
+# plt.show()
+
+############    RENT OF PUBLIC BICYCLE #################
+
+# Plotting a pie chart of column RENT and give labels as 5,10,15 according to their value counts
+# counts = df['RENT'].value_counts()
+
+# # Plot pie chart
+# ax = counts.plot.pie(autopct='%1.1f%%', figsize=(6,6))
+
+# # Set labels equal to values 
+# ax.set_ylabel('')
+# ax.set_title('Distribution of Public bicycle rent charged \n in the sample')
+# labels = [str(v) for v in counts]  
+
+# # Remove legend title and frame
+# plt.legend(labels=labels, loc="best", title=None, frameon=False)
+# # ax.legend(labels=labels, loc='upper left')
+
+# plt.show()
+
+#############################################
+
+# df=df[df['RENT']==5]
+
+# counts = df['RENT_BICYCLE'].value_counts()
+
+# # Plot pie chart
+# ax = counts.plot.pie(autopct='%1.1f%%', figsize=(6,6))
+
+# # Set labels equal to values 
+# ax.set_ylabel('')
+# ax.set_title('Distribution of Public bicycle rent charged \n in the sample')
+# labels = [str(v) for v in counts]  
+
+# # Remove legend title and frame
+# plt.legend(labels=labels, loc="best", title=None, frameon=False)
+# # ax.legend(labels=labels, loc='upper left')
+
+# plt.show()
+df = df[df['RENT'] == 5] 
+plt.figure(figsize=(5,5))
+
+counts = df['RENT_BICYCLE'].value_counts()
+
+# Plot pie chart
+ax = counts.plot.pie(autopct='%1.1f%%', figsize=(6,6))
+
+# Set axis title and remove legend title
+ax.set_title('Distribution of Public bicycle rent charged in the sample')
+labels=[f"{v} " for v in counts.values]
+ax.legend(labels=labels, loc="best", title=None, frameon=False)
+
+# Add values around pie chart
+def custom_autopct(pct):
+    # Calculate the percentage and count for the current slice
+    total = sum(counts)
+    count = int(round(pct * total / 100.0))
+    return f"{count}"
+
+def func(pct, allvals):
+    absolute = int(pct/100.*np.sum(allvals))
+    return "{:.1f}%\n({:d})".format(pct, absolute)
+
+wedges, texts, autotexts = ax.pie(counts, autopct=custom_autopct,
+                                  textprops=dict(color="w"),pctdistance=0.8)
+
+ax.set_ylabel('')
+
 plt.show()
+
+
+
+
+
+
+
 
 
 
