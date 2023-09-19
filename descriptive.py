@@ -26,21 +26,21 @@ df=pd.concat([df1,df2,df3,df4])
 
 # counts, bins = np.histogram(df['MALE'], bins=2)
 
-# plt.hist(df["MALE"],bins=2,edgecolor='black',weights=np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
+# plt.hist(df["MALE"],bins=2,edgecolor='black',weights=100*np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('Gender')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # plt.xticks([0.25,0.75], ['Female', 'Male'])
 
 # plt.show()
 
-
+# print(df['AGE_C'].value_counts())
 ###########################################################################
 
 
@@ -48,16 +48,16 @@ df=pd.concat([df1,df2,df3,df4])
 
 # counts, bins = np.histogram(df['ORIGIN'], bins=8)
 
-# plt.hist(df["ORIGIN"],bins=8,edgecolor='black',weights=np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
+# plt.hist(df["ORIGIN"],bins=8,edgecolor='black',weights=100*np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('Origin')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # plt.title("Distribution trips w.r.t  Origin")
 # plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55], 
 #            ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
@@ -71,16 +71,16 @@ df=pd.concat([df1,df2,df3,df4])
 
 # counts, bins = np.histogram(df['DESTINATION'], bins=8)
 
-# plt.hist(df["DESTINATION"],bins=8,edgecolor='black',weights=np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
+# plt.hist(df["DESTINATION"],bins=8,edgecolor='black',weights=100*np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('Destination')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # plt.title("Distribution trips w.r.t  Destination")
 # plt.xticks([1.4,2.3,3.2,4.1,4.95,5.8,6.7,7.55], 
 #            ['Home','Work', 'School','Shopping','Restaurant','Social','Friends place','Other'])
@@ -92,16 +92,16 @@ df=pd.concat([df1,df2,df3,df4])
 
 # counts, bins = np.histogram(df['N_BICYCLES'], bins=5)
 
-# plt.hist(df["N_BICYCLES"],bins=5,edgecolor='black',weights=np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
+# plt.hist(df["N_BICYCLES"],bins=5,edgecolor='black',weights=100*np.ones(len(df))/len(df),rwidth=0.2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('Bicycle count')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # # plt.title("Distribution trips w.r.t  Origin")
 # plt.xticks([0.4,1.2,2,2.8,3.6],['0','1','2','3','4+'])
 # plt.show()
@@ -139,17 +139,17 @@ df=pd.concat([df1,df2,df3,df4])
 
 # counts, bins = np.histogram(df['ACCESS_DIS'], bins=11)
 
-# plt.hist(df["ACCESS_DIS"],bins=11,edgecolor='black',weights=np.ones(len(df))/len(df),
+# plt.hist(df["ACCESS_DIS"],bins=11,edgecolor='black',weights=100*np.ones(len(df))/len(df),
 #                                       rwidth=2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('DISTANCE RANGES (kms)')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # plt.title("Distribution trips w.r.t Access distances")
 # plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
 # plt.show()
@@ -161,17 +161,17 @@ df=pd.concat([df1,df2,df3,df4])
 # df=df[df["EGRESS_DIS"]>0]
 # counts, bins = np.histogram(df['EGRESS_DIS'], bins=11)
 
-# plt.hist(df["EGRESS_DIS"],bins=11,edgecolor='black',weights=np.ones(len(df))/len(df),
+# plt.hist(df["EGRESS_DIS"],bins=11,edgecolor='black',weights=100*np.ones(len(df))/len(df),
 #                                       rwidth=2,histtype='bar')
 
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
 #     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
 
 # plt.xlabel('DISTANCE RANGES (kms)')
-# plt.ylabel('Percentage')
+# plt.ylabel('Percentage (%)')
 # plt.title("Distribution trips w.r.t Egress distances")
 # plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
 # plt.show()
@@ -385,21 +385,112 @@ df=pd.concat([df1,df2,df3,df4])
 
 ############### Willingness to use rented bicycle ######################
 
-#Histogram for different vales of column RENT_BICYCLE
+# Bar chart of column RENT_BICYCLE with value counts as bar labels and percentage on y-axis
+
+
+# counts, bins = np.histogram(df['RENT_BICYCLE'], bins=4)
+
+# # Calculate percentages 
+# percentages = counts / len(df) * 100
+
+# # Plot bar chart with percentages on y-axis
+# plt.bar(bins[:-1], percentages, width=np.diff(bins), edgecolor='black')
+
+# # Add counts as labels
+# for rect, count in zip(plt.gca().patches, counts):
+#     height = rect.get_height()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 1, count, ha='center', va='bottom')
+
+# plt.xlabel('Willingness to use rented bicycle')  
+# plt.ylabel('Percentage (%)')
+# plt.title("Willingness to use rented bicycle")
+# plt.xticks([1.3,2.1,2.9,3.7],['Neither trips','Access only','Both trips','Egress only']) 
+
+# plt.show()
+
+###################################################################
+
+# import matplotlib.pyplot as plt
+# import pandas as pd
+
+# # Filter dataframes 
+# df_male_0 = df[df['MALE'] == 0]
+# df_male_1 = df[df['MALE'] == 1]
+
+# # Calculate histograms
+# counts_0, _ = np.histogram(df_male_0['RENT_BICYCLE'], bins=4)
+# counts_1, _ = np.histogram(df_male_1['RENT_BICYCLE'], bins=4)
+
+# # Calculate percentages
+# percentages_0 = counts_0 / len(df_male_0) * 100
+# percentages_1 = counts_1 / len(df_male_1) * 100
+
+# # Plot bars side-by-side
+# bar_width = 0.35
+# index = np.arange(len(percentages_0)) 
+# plt.bar(index, percentages_0, bar_width, label='MALE=0')
+# plt.bar(index + bar_width, percentages_1, bar_width, label='MALE=1')
+
+# plt.xlabel('Willingness to use rented bicycle')
+# plt.ylabel('Percentage (%)')
+# plt.title("RENT_BICYCLE by Gender")
+# plt.xticks(index + bar_width/2, ['Neither trips','Access only','Both trips','Egress only'])
+# plt.legend()
+
+# plt.show()
+###############################################
+#### Combined plot ##########
+
+# Filter dataframes
+df=df[df["MALE"]==0]
+df_male_0 = df[df['ORIGIN'] == 1]
+df_male_1 = df[df['DESTINATION'] == 1]
+
+
+
+# Calculate histograms
+counts_0, _ = np.histogram(df_male_0['RENT_BICYCLE'], bins=4)
+counts_1, _ = np.histogram(df_male_1['RENT_BICYCLE'], bins=4)
+
+# Calculate percentages
+percentages_0 = counts_0 / len(df_male_0) * 100
+percentages_1 = counts_1 / len(df_male_1) * 100
+
+# Plot bars side-by-side
+bar_width = 0.35
+index = np.arange(len(percentages_0))
+
+plt.bar(index, percentages_0, bar_width, label='Home as Origin')
+plt.bar(index + bar_width, percentages_1, bar_width, label='Home as destination')
+
+# Annotate the bars with value counts
+for i, p in enumerate(index):
+    plt.annotate(f'{counts_0[i]}', (p, percentages_0[i] + 1), ha='center')
+    plt.annotate(f'{counts_1[i]}', (p + bar_width, percentages_1[i] + 1), ha='center')
+
+plt.xlabel('Willingness to use rented bicycle')
+plt.ylabel('Percentage (%)')
+plt.title("Willingness to use rented Bicycle \n Female respondents")
+plt.xticks(index + bar_width/2, ['Neither trips', 'Access only', 'Both trips', 'Egress only'])
+plt.legend()
+
+plt.show()
+
+###########################################
+
+
+# #Histogram for different vales of column RENT_BICYCLE
 # df=df[df["MALE"]==0]
 # counts, bins = np.histogram(df['RENT_BICYCLE'], bins=4)
 # counts = (100*counts)/np.sum(counts)
-# plt.hist(df["RENT_BICYCLE"],bins=4,edgecolor='black',weights=np.ones(len(df))/len(df),
+# plt.hist(df["RENT_BICYCLE"],bins=4,edgecolor='black',weights=100*np.ones(len(df))/len(df),
 #                                         rwidth=1.5,histtype='bar')  
-# plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+# # Include counts as bar labels
 # for rect, count in zip(plt.gca().patches, counts):
 #     height = rect.get_height()
-#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, round(count,2), ha='center', va='bottom')
-# plt.xlabel('Willingness to use rented bicycle')
-# plt.ylabel('Percentage')
-# plt.title("Willingness to use rented bicycle")  
-# plt.xticks([1.3,2.1,2.9,3.7],['Neither trips','Access only','Both trips','Egress only'])
-# plt.show()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom')
+
 
 # print(df["RENT_BICYCLE"].unique())
 # print(df["BICYCLE_USE"].unique())
@@ -407,6 +498,11 @@ df=pd.concat([df1,df2,df3,df4])
 # df.to_csv('check.csv')
 
 ############# Access times variation #########################
+# Printing the descriptive statistics of ACCESS_TIME column
+# print(df["EGRESS_TIME"].describe())
+# df=df[df["ACCESS_TIME"]<60]
+# df=df[df["ACCESS_TIME"]>0]
+# print(df["ACCESS_TIME"].describe()) 
 
 # df=df[df["EGRESS_TIME"]<60]
 # df=df[df["ACCESS_TIME"]<60]
@@ -590,36 +686,36 @@ df=pd.concat([df1,df2,df3,df4])
 # # ax.legend(labels=labels, loc='upper left')
 
 # plt.show()
-df = df[df['RENT'] == 5] 
-plt.figure(figsize=(5,5))
+# df = df[df['RENT'] == 5] 
+# plt.figure(figsize=(5,5))
 
-counts = df['RENT_BICYCLE'].value_counts()
+# counts = df['RENT_BICYCLE'].value_counts()
 
-# Plot pie chart
-ax = counts.plot.pie(autopct='%1.1f%%', figsize=(6,6))
+# # Plot pie chart
+# ax = counts.plot.pie(autopct='%1.1f%%', figsize=(6,6))
 
-# Set axis title and remove legend title
-ax.set_title('Distribution of Public bicycle rent charged in the sample')
-labels=[f"{v} " for v in counts.values]
-ax.legend(labels=labels, loc="best", title=None, frameon=False)
+# # Set axis title and remove legend title
+# ax.set_title('Distribution of Public bicycle rent charged in the sample')
+# labels=[f"{v} " for v in counts.values]
+# ax.legend(labels=labels, loc="best", title=None, frameon=False)
 
-# Add values around pie chart
-def custom_autopct(pct):
-    # Calculate the percentage and count for the current slice
-    total = sum(counts)
-    count = int(round(pct * total / 100.0))
-    return f"{count}"
+# # Add values around pie chart
+# def custom_autopct(pct):
+#     # Calculate the percentage and count for the current slice
+#     total = sum(counts)
+#     count = int(round(pct * total / 100.0))
+#     return f"{count}"
 
-def func(pct, allvals):
-    absolute = int(pct/100.*np.sum(allvals))
-    return "{:.1f}%\n({:d})".format(pct, absolute)
+# def func(pct, allvals):
+#     absolute = int(pct/100.*np.sum(allvals))
+#     return "{:.1f}%\n({:d})".format(pct, absolute)
 
-wedges, texts, autotexts = ax.pie(counts, autopct=custom_autopct,
-                                  textprops=dict(color="w"),pctdistance=0.8)
+# wedges, texts, autotexts = ax.pie(counts, autopct=custom_autopct,
+#                                   textprops=dict(color="w"),pctdistance=0.8)
 
-ax.set_ylabel('')
+# ax.set_ylabel('')
 
-plt.show()
+# plt.show()
 
 
 
