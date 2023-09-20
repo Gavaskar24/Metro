@@ -225,9 +225,9 @@ df['MALE']=df['GENDER'].map(gender_mapping).fillna(0).astype(int)
 ############### ACCESS MODE ####################
 my_dict={'Walk':1,'Auto Rickshaw':5,'Two-Wheeler':3,'Dropped-off by friends/others':8,
          'Car':4,'Ola/Uber car':6,'Bicycle':2,'Rapido/Uber moto/Ola App two-wheeler':7,
-         'Office shuttles':9,'Car pooling':6,'Office vehicle':10,
+         'Office shuttles':9,'Car pooling':6,'Office vehicle':10,'Car pooling ':6,
          'Rapido/uber moto/Ola App two-wheeler':7,'Car from KLN driving school':6,
-         'Office vehicle':10,'Train':11,'Walk':1,'Friends two wheeler':8,'Ksrtc bus':12,
+         'Office vehicle':10,'Office vehicle ':10,'Train ':11,'Train':11,'Walk':1,'Friends two wheeler':8,'Ksrtc bus':12,
          'Rapido/Uber Moto/Ola App two-wheeler':7,'Bus':12,'Company cab':10,'Shuttle':9,
          'Dropped by coleg':8,'Dropped by friend':8,'Uber auto':5,'College bus':12,
          'Company shuttle':9,'Office cab':10,'Company bus':9,'Company cab':10,
@@ -246,7 +246,8 @@ my_dict={'Walk':1,'Auto Rickshaw':5,'Two-Wheeler':3,'Dropped-off by friends/othe
         'Drove and parked a two-Wheeler ':3, 'Office shuttle bus':9, 'Office bus':9,
         'Dropped-off by friends/family members/others ':8, 'Ksrtc bus':12,
         'Drove and parked a car ':4, 'Yulu':7, 'Rapido/uber moto/Ola App two-wheeler ':7,
-        'Office shuttle bus ':9}
+        'Office shuttle bus ':9,'Dropped by coleg ':8, 'Dropped by friend ':8, 'Uber auto ':5,'Company cab ':10,
+        'Railway train ':11,'Indian railway ':11,'Rapido/Uber Moto/Ola App two-wheeler ':7}
 
 df['ACCESS_M']=0
 
@@ -280,5 +281,4 @@ elif file_name=="Aug_22.csv":
 
 else:
     df.to_csv('outputfile_4.csv',index=True)
-
 

@@ -11,6 +11,7 @@ df3=pd.read_csv('outputfile_3.csv')
 df4=pd.read_csv('outputfile_4.csv')
 
 df=pd.concat([df1,df2,df3,df4])
+df_park=pd.concat([df2,df3,df4])
 
 print(df.columns)
 

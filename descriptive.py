@@ -14,7 +14,7 @@ df4=pd.read_csv('outputfile_4.csv')
 # df_parking=pd.read_csv('parking.csv')
 
 df=pd.concat([df1,df2,df3,df4])
-# df_park=pd.concat([df2,df3,df4])
+df_park=pd.concat([df2,df3,df4])
 # df.to_csv('combined.csv')
 # df_park.to_csv('parking.csv')
 
@@ -306,28 +306,28 @@ df=pd.concat([df1,df2,df3,df4])
 
 
 ############## PARKING crosstab #####################
-# df=df_parking
+# df=df_park
 # # df=df[df["MALE"]==1]
 # # df=df[df["N_BICYCLES"]==0]
 # # df=df[(df["DESTINATION"]==1) ]
 
-# cross_tab=pd.crosstab(df["ACCESS_DIS"],df["PARK"],margins=True,normalize='index')*100
+# cross_tab=pd.crosstab(df["EGRESS_DIS"],df["PARK"],margins=True,normalize='index')*100
 # #rounding the values in cross_tab to 2 decimals
 # cross_tab=np.round(cross_tab,decimals=2)
 # print(cross_tab)
 # # cross_tab=cross_tab.iloc[:-1,:-1] 0 
 # cross_tab.plot(kind='bar',stacked=True)
 # plt.xlabel('Egress distance (km)')
-# plt.ylabel('Percentage')
-# plt.title("Crosstabulation plot for Egress distance & Bicycle parking \n for respondents who  own bicycle and with home as destination")
+# plt.ylabel('Percentage (%)')
+# plt.title("Response to using their own bicycle \n for various Egress distances")
 # plt.xticks([0,1,2,3,4,5,6,7,8,9,10,11],['<0.5','0.5-1','1-1.5','1.5-2','2-2.5','2.5-3','3-3.5','3.5-4','4-4.5','4.5-5','5+','All'])
 # legend_labels=['Will not use','Not Applicable','Cycle track','Present condition']
 # plt.legend(legend_labels)
 # plt.xticks(rotation=0)
 # plt.show()
 # # new_df=df[df["PARK"]==2]
-# df.to_csv('check.csv')
-# cross_tab.to_csv('Egress_distance vs Parking for respondents with home as destination and  owning bicycle.csv')
+# # df.to_csv('check.csv')
+# cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
 
 # ############################################
 
@@ -442,39 +442,40 @@ df=pd.concat([df1,df2,df3,df4])
 #### Combined plot ##########
 
 # Filter dataframes
-df=df[df["MALE"]==0]
-df_male_0 = df[df['ORIGIN'] == 1]
-df_male_1 = df[df['DESTINATION'] == 1]
+# df=df[df["ORIGIN"]==2]
+# df=df[df["DESTINATION"]==1]
+# df_male_0 = df[df['MALE'] ==1 ]
+# df_male_1 = df[df['MALE'] == 0]
 
 
 
 # Calculate histograms
-counts_0, _ = np.histogram(df_male_0['RENT_BICYCLE'], bins=4)
-counts_1, _ = np.histogram(df_male_1['RENT_BICYCLE'], bins=4)
+# counts_0, _ = np.histogram(df_male_0['RENT_BICYCLE'], bins=4)
+# counts_1, _ = np.histogram(df_male_1['RENT_BICYCLE'], bins=4)
 
-# Calculate percentages
-percentages_0 = counts_0 / len(df_male_0) * 100
-percentages_1 = counts_1 / len(df_male_1) * 100
+# # Calculate percentages
+# percentages_0 = counts_0 / len(df_male_0) * 100
+# percentages_1 = counts_1 / len(df_male_1) * 100
 
-# Plot bars side-by-side
-bar_width = 0.35
-index = np.arange(len(percentages_0))
+# # Plot bars side-by-side
+# bar_width = 0.35
+# index = np.arange(len(percentages_0))
 
-plt.bar(index, percentages_0, bar_width, label='Home as Origin')
-plt.bar(index + bar_width, percentages_1, bar_width, label='Home as destination')
+# plt.bar(index, percentages_0, bar_width, label='Male')
+# plt.bar(index + bar_width, percentages_1, bar_width, label='Female')
 
-# Annotate the bars with value counts
-for i, p in enumerate(index):
-    plt.annotate(f'{counts_0[i]}', (p, percentages_0[i] + 1), ha='center')
-    plt.annotate(f'{counts_1[i]}', (p + bar_width, percentages_1[i] + 1), ha='center')
+# # Annotate the bars with value counts
+# for i, p in enumerate(index):
+#     plt.annotate(f'{counts_0[i]}', (p, percentages_0[i] + 1), ha='center')
+#     plt.annotate(f'{counts_1[i]}', (p + bar_width, percentages_1[i] + 1), ha='center')
 
-plt.xlabel('Willingness to use rented bicycle')
-plt.ylabel('Percentage (%)')
-plt.title("Willingness to use rented Bicycle \n Female respondents")
-plt.xticks(index + bar_width/2, ['Neither trips', 'Access only', 'Both trips', 'Egress only'])
-plt.legend()
+# plt.xlabel('Willingness to use rented bicycle')
+# plt.ylabel('Percentage (%)')
+# plt.title("Willingness to use rented Bicycle \n Work to home base trips")
+# plt.xticks(index + bar_width/2, ['Neither trips', 'Access only', 'Both trips', 'Egress only'])
+# plt.legend()
 
-plt.show()
+# plt.show()
 
 ###########################################
 
@@ -718,8 +719,47 @@ plt.show()
 # plt.show()
 
 
+# df=df[df["ACCESS_M"]==1]
+
+# print(df["ACCESS_DIS"].value_counts())
+
+# print(df["ACCESS_MODE"].unique())
+
+##################################################
+
+# Crosstabulation between columns ACCESS_M and RENT_BICYCLE
+# df=df_park
+crosstab = pd.crosstab(df["ACCESS_M"],df["PARK"],margins=True,normalize='index')*100
+#rounding the values in cross_tab to 2 decimals
+crosstab=np.round(crosstab,decimals=2)
+print(crosstab)
 
 
+# print(df["EGRESS_M"].value_counts())
+
+
+print(df["ACCESS_DIS"].value_counts())
+print()
+
+# plot ACCESS_DIS
+counts, bins = np.histogram(df['ACCESS_DIS'], bins=11)
+
+# crosstabulation of columns ACCESS_DIS and RENT_BICYCLE
+crosstab = pd.crosstab(df["ACCESS_DIS"],df["PARK"],margins=True,normalize='index')*100
+#rounding the values in cross_tab to 2 decimals
+crosstab=np.round(crosstab,decimals=2)
+print(crosstab)
+# Plot crosstabulation
+bar_width=0.5
+crosstab.plot(kind='bar',stacked=True,width=bar_width)
+plt.xlabel('Access distance (km)')
+plt.ylabel('Percentage')
+plt.title("Access distance vs Rent bicycle")
+plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
+legend_labels=['Only Access','Only Egress','For Both','For Neither']
+plt.legend(legend_labels)
+plt.xticks(rotation=0)
+plt.show()
 
 
 
