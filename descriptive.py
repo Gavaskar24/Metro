@@ -18,44 +18,7 @@ df_park=pd.concat([df2,df3,df4])
 # df.to_csv('combined.csv')
 # df_park.to_csv('parking.csv')
 
-#percentage of rows with MALE==1 in df
 
-#### Mapping ACCESS and EGRESS Distances
-
-def map_access_dis(ACCESS_DIS):
-    if ACCESS_DIS in [1, 2]:
-        return ACCESS_DIS
-    elif ACCESS_DIS in [3,4]:
-        return 3
-    elif ACCESS_DIS in [5,6,7,8]:
-        return 4
-    elif ACCESS_DIS in [9,10,11]:
-        return 5
-
-# Apply the mapping function to create the 'ACCESS_DIS_B' column
-df['ACCESS_DIS_B'] = df['ACCESS_DIS'].apply(map_access_dis)
-
-
-
-# convert all values of EGRESS_DIS into integers
-df["EGRESS_DIS"]=df["EGRESS_DIS"].astype(int)
-
-def map_egress_dis(EGRESS_DIS):
-    if EGRESS_DIS in [1,2]:
-        return int(EGRESS_DIS)
-    if EGRESS_DIS in [3,4]:
-        return 3
-    if EGRESS_DIS in [5,6,7,8]:
-        return 4
-    if EGRESS_DIS in [9,10,11]:
-        return 5
-    elif EGRESS_DIS in [0]:
-        return 2
-    
-    
-
-# Apply the mapping function to create the 'EGRESS_DIS_B' column
-df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
 
 ########################   GENDER DISTRIBUTION #################
 
@@ -292,25 +255,25 @@ df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
 # df=df[df["MALE"]==1]
 
 
-cross_tab=pd.crosstab(df["EGRESS_DIS_B"],df["BICYCLE_USE"],margins=True,normalize='index')*100
-#rounding the values in cross_tab to 2 decimals
-cross_tab=np.round(cross_tab,decimals=2)
-print(cross_tab)
-# cross_tab=cross_tab.iloc[:-1,:-1] 0 
-cross_tab.plot(kind='bar',stacked=True)
-plt.xlabel('Access distance')
-plt.ylabel('Percentage')
-plt.title("Egress distance vs Rent bicycle")
-plt.xticks([0,1,2,3,4,5],['<0.5','0.5-1','1-2','2-4','>4','All'])
-legend_labels=['Only Access','Only Egress','For Both','For Neither']
-plt.legend(legend_labels)
-plt.xticks(rotation=0)
-plt.show()
-cross_tab.to_csv('Egress distance vs Rented bicycle use.csv')
+# cross_tab=pd.crosstab(df["EGRESS_DIS_B"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# cross_tab=np.round(cross_tab,decimals=2)
+# print(cross_tab)
+# # cross_tab=cross_tab.iloc[:-1,:-1] 0 
+# cross_tab.plot(kind='bar',stacked=True)
+# plt.xlabel('Access distance')
+# plt.ylabel('Percentage')
+# plt.title("Egress distance vs Rent bicycle")
+# plt.xticks([0,1,2,3,4,5],['<0.5','0.5-1','1-2','2-4','>4','All'])
+# legend_labels=['Only Access','Only Egress','For Both','For Neither']
+# plt.legend(legend_labels)
+# plt.xticks(rotation=0)
+# plt.show()
+# cross_tab.to_csv('Egress distance vs Rented bicycle use.csv')
 
-df=df[df["EGRESS_DIS_B"]==1]
+# df=df[df["EGRESS_DIS_B"]==1]
 
-print(df["RENT_BICYCLE"].value_counts())
+# print(df["RENT_BICYCLE"].value_counts())
 
 
 ############## Combined cross tabulation ##############################
@@ -347,10 +310,38 @@ print(df["RENT_BICYCLE"].value_counts())
 
 
 ############## PARKING crosstab #####################
+df=df_park
+# # df=df[df["MALE"]==1]
+# df=df[df["N_BICYCLES"]==0]
+df=df[(df["ORIGIN"]==2) ]
+df=df[df["DESTINATION"]==1]
+print(df["PARK"].value_counts())
+
+cross_tab=pd.crosstab(df["EGRESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
+#rounding the values in cross_tab to 2 decimals
+cross_tab=np.round(cross_tab,decimals=2)
+print(cross_tab)
+# cross_tab=cross_tab.iloc[:-1,:-1] 0 
+cross_tab.plot(kind='bar',stacked=True)
+plt.xlabel('Egress distance (km)')
+plt.ylabel('Percentage (%)')
+plt.title("Response to using their own bicycle \n for various Egress distances \n Work to home trips")
+plt.xticks([0,1,2,3,4,5],['0-0.5','0.5-1','1-2','2-4','4+','ALL'])
+legend_labels=['Present condition','Cycle track','Will not use']
+plt.legend(legend_labels)
+# legend_labels = legend_labels[::-1]
+plt.xticks(rotation=0)
+plt.show()
+
+cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
+
+# ############################################
+
 # df=df_park
 # # df=df[df["MALE"]==1]
-# # df=df[df["N_BICYCLES"]==0]
-# # df=df[(df["DESTINATION"]==1) ]
+# df=df[df["N_BICYCLES"]>0]
+# df=df[(df["ORIGIN"]==1) & (df["DESTINATION"]==2)]
+# print(df["PARK"].value_counts())
 
 # cross_tab=pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
 # #rounding the values in cross_tab to 2 decimals
@@ -361,16 +352,15 @@ print(df["RENT_BICYCLE"].value_counts())
 # plt.xlabel('Access distance (km)')
 # plt.ylabel('Percentage (%)')
 # plt.title("Response to using their own bicycle \n for various Access distances")
-# plt.xticks([0.4,1.2,2,2.8,3.6],['0','1','2','3','4+'])
-# legend_labels=['Present condition','Cycle track','Not Applicable','Will not use']
+# plt.xticks([0,1,2,3,4,5],['0-0.5','0.5-1','1-2','2-4','4+','ALL'])
+# legend_labels=['Present condition','Cycle track','Will not use']
 # plt.legend(legend_labels)
+# # legend_labels = legend_labels[::-1]
 # plt.xticks(rotation=0)
 # plt.show()
 # # new_df=df[df["PARK"]==2]
 # # df.to_csv('check.csv')
 # cross_tab.to_csv('Response to using their own bicycle wrt Access distance ')
-
-# ############################################
 
 
 ######### PARKING , MALE vs female combined plot #########################

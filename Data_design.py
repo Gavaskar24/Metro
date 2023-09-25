@@ -266,11 +266,47 @@ for key, value in my_dict.items():
     df.loc[df['EGRESS_MODE'] == key, 'EGRESS_M'] = value
 
 
-
-
 #######################################################
+#### Mapping ACCESS and EGRESS Distances
+
+def map_access_dis(ACCESS_DIS):
+    if ACCESS_DIS in [1, 2]:
+        return ACCESS_DIS
+    elif ACCESS_DIS in [3,4]:
+        return 3
+    elif ACCESS_DIS in [5,6,7,8]:
+        return 4
+    elif ACCESS_DIS in [9,10,11]:
+        return 5
+
+# Apply the mapping function to create the 'ACCESS_DIS_B' column
+df['ACCESS_DIS_B'] = df['ACCESS_DIS'].apply(map_access_dis)
 
 
+
+# convert all values of EGRESS_DIS into integers
+df["EGRESS_DIS"]=df["EGRESS_DIS"].astype(int)
+
+def map_egress_dis(EGRESS_DIS):
+    if EGRESS_DIS in [1,2]:
+        return int(EGRESS_DIS)
+    if EGRESS_DIS in [3,4]:
+        return 3
+    if EGRESS_DIS in [5,6,7,8]:
+        return 4
+    if EGRESS_DIS in [9,10,11]:
+        return 5
+    elif EGRESS_DIS in [0]:
+        return 2
+    
+    
+
+# Apply the mapping function to create the 'EGRESS_DIS_B' column
+df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
+
+
+
+########################################################
 
 if file_name=="Aug_10.csv":
     df.to_csv('outputfile_1.csv',index=True)
