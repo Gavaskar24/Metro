@@ -92,8 +92,8 @@ df['S_3'] = df['S_3'].str.replace(r'\(.*?\)', '', regex=True)
 # print(df.columns)
 arr=[      'Yes, I own a bicycle or I will buy a bicycle, and use it under current travel conditions between my home and the metro station. .',
  'Yes, I own a bicycle or I will buy a bicycle, and use it if a safe bicycling path is available between my home and the metro station. .',
-                                                                                                         'No, I will not use a bicycle. .',
-                                                                             'Not Applicable - because neither ends of my trip is home. .']
+                                                                        'Not Applicable - because neither ends of my trip is home. .' ,
+                                                                                                         'No, I will not use a bicycle. .']
 print("PARKING",arr)
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
@@ -179,9 +179,10 @@ for key, value in my_dict.items():
 
 
 ###############  ACCESS_DISTANCE and EGRESS_DISTANCE ##########################
-access=['< 0.5 km ', '1.5 km to 2 km ',    '0.5 to 1 km ', '1 km to 1.5 km ',
- '3 km to 3.5 km ', '4.5 km to 5 km ', '2.5 km to 3 km ',         '> 5 km ',
- '3.5 km to 4 km ', '4 km to 4.5 km ', '2 km to 2.5 km ']
+access=['< 0.5 km ','0.5 to 1 km ','1 km to 1.5 km ', '1.5 km to 2 km ', '2 km to 2.5 km ',    
+  '2.5 km to 3 km ','3 km to 3.5 km ','3.5 km to 4 km ','4 km to 4.5 km ', '4.5 km to 5 km ', '> 5 km ']
+
+print(df["EGRESS_DISTANCE"].unique())
 
 df['ACCESS_DIS']=0
 df['EGRESS_DIS']=0
@@ -198,10 +199,10 @@ df['EGRESS_DIS'] = df['EGRESS_DISTANCE'].map(access_mapping).fillna(0).astype(in
 
 ################# BICYCLE USE ####################
 
-bicycle=['For neither access nor egress trips ',
-                'For access trip only ',
-    'For both access and egress trips ',
-                'For egress trip only ']
+bicycle=['For access trip only ',
+         'For egress trip only ',
+         'For both access and egress trips ',
+    'For neither access nor egress trips ']
 
 df['RENT_BICYCLE']=0
 
@@ -268,6 +269,7 @@ for key, value in my_dict.items():
 
 
 #######################################################
+
 
 
 if file_name=="Aug_10.csv":

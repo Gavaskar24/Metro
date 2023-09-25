@@ -20,7 +20,42 @@ df_park=pd.concat([df2,df3,df4])
 
 #percentage of rows with MALE==1 in df
 
+#### Mapping ACCESS and EGRESS Distances
 
+def map_access_dis(ACCESS_DIS):
+    if ACCESS_DIS in [1, 2]:
+        return ACCESS_DIS
+    elif ACCESS_DIS in [3,4]:
+        return 3
+    elif ACCESS_DIS in [5,6,7,8]:
+        return 4
+    elif ACCESS_DIS in [9,10,11]:
+        return 5
+
+# Apply the mapping function to create the 'ACCESS_DIS_B' column
+df['ACCESS_DIS_B'] = df['ACCESS_DIS'].apply(map_access_dis)
+
+
+
+# convert all values of EGRESS_DIS into integers
+df["EGRESS_DIS"]=df["EGRESS_DIS"].astype(int)
+
+def map_egress_dis(EGRESS_DIS):
+    if EGRESS_DIS in [1,2]:
+        return int(EGRESS_DIS)
+    if EGRESS_DIS in [3,4]:
+        return 3
+    if EGRESS_DIS in [5,6,7,8]:
+        return 4
+    if EGRESS_DIS in [9,10,11]:
+        return 5
+    elif EGRESS_DIS in [0]:
+        return 2
+    
+    
+
+# Apply the mapping function to create the 'EGRESS_DIS_B' column
+df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
 
 ########################   GENDER DISTRIBUTION #################
 
@@ -139,6 +174,7 @@ df_park=pd.concat([df2,df3,df4])
 
 # counts, bins = np.histogram(df['ACCESS_DIS'], bins=11)
 
+
 # plt.hist(df["ACCESS_DIS"],bins=11,edgecolor='black',weights=100*np.ones(len(df))/len(df),
 #                                       rwidth=2,histtype='bar')
 
@@ -153,6 +189,8 @@ df_park=pd.concat([df2,df3,df4])
 # plt.title("Distribution trips w.r.t Access distances")
 # plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
 # plt.show()
+
+# print(df["ACCESS_DIS"].value_counts())
 
 ################################################################
 
@@ -253,23 +291,26 @@ df_park=pd.concat([df2,df3,df4])
 ############################################
 # df=df[df["MALE"]==1]
 
-# cross_tab=pd.crosstab(df["EGRESS_DIS"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
-# #rounding the values in cross_tab to 2 decimals
-# cross_tab=np.round(cross_tab,decimals=2)
-# print(cross_tab)
-# # cross_tab=cross_tab.iloc[:-1,:-1] 0 
-# cross_tab.plot(kind='bar',stacked=True)
-# plt.xlabel('Egress distance')
-# plt.ylabel('Percentage')
-# plt.title("Egress distance vs Rent bicycle")
-# plt.xticks([0,1,2,3,4,5,6,7,8,9,10,11],['<0.5','0.5-1','1-1.5','1.5-2','2-2.5','2.5-3','3-3.5','3.5-4','4-4.5','4.5-5','5+','All'])
-# legend_labels=['Only Access','Only Egress','For Both','For Neither']
-# plt.legend(legend_labels)
-# plt.xticks(rotation=0)
-# plt.show()
-# cross_tab.to_csv('Egress distance vs Rented bicycle use.csv')
 
-# print(df["RENT_BICYCLE"].value_counts())
+cross_tab=pd.crosstab(df["EGRESS_DIS_B"],df["BICYCLE_USE"],margins=True,normalize='index')*100
+#rounding the values in cross_tab to 2 decimals
+cross_tab=np.round(cross_tab,decimals=2)
+print(cross_tab)
+# cross_tab=cross_tab.iloc[:-1,:-1] 0 
+cross_tab.plot(kind='bar',stacked=True)
+plt.xlabel('Access distance')
+plt.ylabel('Percentage')
+plt.title("Egress distance vs Rent bicycle")
+plt.xticks([0,1,2,3,4,5],['<0.5','0.5-1','1-2','2-4','>4','All'])
+legend_labels=['Only Access','Only Egress','For Both','For Neither']
+plt.legend(legend_labels)
+plt.xticks(rotation=0)
+plt.show()
+cross_tab.to_csv('Egress distance vs Rented bicycle use.csv')
+
+df=df[df["EGRESS_DIS_B"]==1]
+
+print(df["RENT_BICYCLE"].value_counts())
 
 
 ############## Combined cross tabulation ##############################
@@ -311,23 +352,23 @@ df_park=pd.concat([df2,df3,df4])
 # # df=df[df["N_BICYCLES"]==0]
 # # df=df[(df["DESTINATION"]==1) ]
 
-# cross_tab=pd.crosstab(df["EGRESS_DIS"],df["PARK"],margins=True,normalize='index')*100
+# cross_tab=pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
 # #rounding the values in cross_tab to 2 decimals
 # cross_tab=np.round(cross_tab,decimals=2)
 # print(cross_tab)
 # # cross_tab=cross_tab.iloc[:-1,:-1] 0 
 # cross_tab.plot(kind='bar',stacked=True)
-# plt.xlabel('Egress distance (km)')
+# plt.xlabel('Access distance (km)')
 # plt.ylabel('Percentage (%)')
-# plt.title("Response to using their own bicycle \n for various Egress distances")
-# plt.xticks([0,1,2,3,4,5,6,7,8,9,10,11],['<0.5','0.5-1','1-1.5','1.5-2','2-2.5','2.5-3','3-3.5','3.5-4','4-4.5','4.5-5','5+','All'])
-# legend_labels=['Will not use','Not Applicable','Cycle track','Present condition']
+# plt.title("Response to using their own bicycle \n for various Access distances")
+# plt.xticks([0.4,1.2,2,2.8,3.6],['0','1','2','3','4+'])
+# legend_labels=['Present condition','Cycle track','Not Applicable','Will not use']
 # plt.legend(legend_labels)
 # plt.xticks(rotation=0)
 # plt.show()
 # # new_df=df[df["PARK"]==2]
 # # df.to_csv('check.csv')
-# cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
+# cross_tab.to_csv('Response to using their own bicycle wrt Access distance ')
 
 # ############################################
 
@@ -729,40 +770,92 @@ df_park=pd.concat([df2,df3,df4])
 
 # Crosstabulation between columns ACCESS_M and RENT_BICYCLE
 # df=df_park
-crosstab = pd.crosstab(df["ACCESS_M"],df["PARK"],margins=True,normalize='index')*100
-#rounding the values in cross_tab to 2 decimals
-crosstab=np.round(crosstab,decimals=2)
-print(crosstab)
+# crosstab = pd.crosstab(df["ACCESS_M"],df["PARK"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# crosstab=np.round(crosstab,decimals=2)
+# print(crosstab)
 
 
-# print(df["EGRESS_M"].value_counts())
+# # print(df["EGRESS_M"].value_counts())
 
 
-print(df["ACCESS_DIS"].value_counts())
-print()
+# print(df["ACCESS_DIS"].value_counts())
+# print()
 
-# plot ACCESS_DIS
-counts, bins = np.histogram(df['ACCESS_DIS'], bins=11)
+# # plot ACCESS_DIS
+# counts, bins = np.histogram(df['ACCESS_DIS'], bins=11)
 
-# crosstabulation of columns ACCESS_DIS and RENT_BICYCLE
-crosstab = pd.crosstab(df["ACCESS_DIS"],df["PARK"],margins=True,normalize='index')*100
-#rounding the values in cross_tab to 2 decimals
-crosstab=np.round(crosstab,decimals=2)
-print(crosstab)
-# Plot crosstabulation
-bar_width=0.5
-crosstab.plot(kind='bar',stacked=True,width=bar_width)
-plt.xlabel('Access distance (km)')
-plt.ylabel('Percentage')
-plt.title("Access distance vs Rent bicycle")
-plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
-legend_labels=['Only Access','Only Egress','For Both','For Neither']
-plt.legend(legend_labels)
-plt.xticks(rotation=0)
-plt.show()
-
-
+# # crosstabulation of columns ACCESS_DIS and RENT_BICYCLE
+# crosstab = pd.crosstab(df["ACCESS_DIS"],df["PARK"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# crosstab=np.round(crosstab,decimals=2)
+# print(crosstab)
+# # Plot crosstabulation
+# bar_width=0.5
+# crosstab.plot(kind='bar',stacked=True,width=bar_width)
+# plt.xlabel('Access distance (km)')
+# plt.ylabel('Percentage')
+# plt.title("Access distance vs Rent bicycle")
+# plt.xticks([1,1.9,2.8,3.75,4.65,5.5,6.5,7.35,8.3,9.2,10.1],['0','0.5','1','1.5','2','2.5','3','3.5','4','4.5','5+'])
+# legend_labels=['Only Access','Only Egress','For Both','For Neither']
+# plt.legend(legend_labels)
+# plt.xticks(rotation=0)
+# plt.show()
 
 
+#####  Binning ACCESS_DIS and EGRESS_DIS #####################
 
+# Intervales are 0-0.5,0.5-1,1-1.5,1.5-2,2-3,3-5,>5
+
+
+# create a new column ACCESS_DIS_B which has 7 bins 
+# the values in each bin correspond to values of ACCESS_DIS
+# the values 1,2,3,4,11 of ACCESS_DIS will fall into seperate bins
+# values 5,6 will fall in another bin and values 7,8,9,10 will fall in another bin
+#######################################
+
+
+# counts, bins = np.histogram(df['ACCESS_DIS_B'], bins=5)
+
+
+# plt.hist(df["ACCESS_DIS_B"],bins=5,edgecolor='black',weights=100*np.ones(len(df))/len(df),
+#                                       rwidth=2,histtype='bar')
+
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+
+# for rect, count in zip(plt.gca().patches, counts):
+#     height = rect.get_height()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
+
+# plt.xlabel('DISTANCE RANGES (kms)')
+# plt.ylabel('Percentage (%)')
+# plt.title("Distribution trips w.r.t Acress distances")
+# plt.xticks([1,1.8,2.6,3.4,4.2],['0','0.5','1','2','4'])
+# plt.show()
+
+
+
+
+
+
+
+# counts, bins = np.histogram(df['EGRESS_DIS_B'], bins=5)
+
+
+# plt.hist(df["EGRESS_DIS_B"],bins=5,edgecolor='black',weights=100*np.ones(len(df))/len(df),
+#                                       rwidth=2,histtype='bar')
+
+# # plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
+
+# for rect, count in zip(plt.gca().patches, counts):
+#     height = rect.get_height()
+#     plt.text(rect.get_x() + rect.get_width()/2, height + 0.01, count, ha='center', va='bottom') 
+
+# plt.xlabel('DISTANCE RANGES (kms)')
+# plt.ylabel('Percentage (%)')
+# plt.title("Distribution trips w.r.t Egress distances")
+# plt.xticks([1,1.8,2.6,3.4,4.2],['0','0.5','1','2','4'])
+# plt.show()
+
+# print(df["EGRESS_DIS"].value_counts())
 
