@@ -311,13 +311,14 @@ df_park=pd.concat([df2,df3,df4])
 
 ############## PARKING crosstab #####################
 df=df_park
+print(df.shape)
 # # df=df[df["MALE"]==1]
 # df=df[df["N_BICYCLES"]==0]
-df=df[(df["ORIGIN"]==2) ]
-df=df[df["DESTINATION"]==1]
+df=df[(df["ORIGIN"]==1) ]
+# df=df[df["DESTINATION"]==1]
 print(df["PARK"].value_counts())
 
-cross_tab=pd.crosstab(df["EGRESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
+cross_tab=pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
 #rounding the values in cross_tab to 2 decimals
 cross_tab=np.round(cross_tab,decimals=2)
 print(cross_tab)
@@ -325,7 +326,7 @@ print(cross_tab)
 cross_tab.plot(kind='bar',stacked=True)
 plt.xlabel('Egress distance (km)')
 plt.ylabel('Percentage (%)')
-plt.title("Response to using their own bicycle \n for various Egress distances \n Work to home trips")
+plt.title("Response to using their own bicycle \n for various Access distances \n home as origin")
 plt.xticks([0,1,2,3,4,5],['0-0.5','0.5-1','1-2','2-4','4+','ALL'])
 legend_labels=['Present condition','Cycle track','Will not use']
 plt.legend(legend_labels)
@@ -334,6 +335,7 @@ plt.xticks(rotation=0)
 plt.show()
 
 cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
+
 
 # ############################################
 
@@ -804,7 +806,7 @@ cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
 # values 5,6 will fall in another bin and values 7,8,9,10 will fall in another bin
 #######################################
 
-
+# df=df[df["ORIGIN"]==1]
 # counts, bins = np.histogram(df['ACCESS_DIS_B'], bins=5)
 
 
