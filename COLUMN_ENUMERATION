@@ -143,3 +143,11 @@ Value: 9 => Office bus
 Value: 10 =>office car
 Value: 11=> Train
 Value: 12 => Bus
+
+ACCESS_DIS_B
+
+Value 1: upto 0.5 km
+Value 2: 0.5 km to 1 km
+Value 3: 1 km to 2 km
+Value 4: 2 km to 4 km
+Value 5: > 4 km

@@ -310,31 +310,31 @@ df_park=pd.concat([df2,df3,df4])
 
 
 ############## PARKING crosstab #####################
-df=df_park
-print(df.shape)
-# # df=df[df["MALE"]==1]
-# df=df[df["N_BICYCLES"]==0]
-df=df[(df["ORIGIN"]==1) ]
-# df=df[df["DESTINATION"]==1]
-print(df["PARK"].value_counts())
+# df=df_park
+# print(df.shape)
+# # # df=df[df["MALE"]==1]
+# # df=df[df["N_BICYCLES"]==0]
+# df=df[(df["ORIGIN"]==1) ]
+# # df=df[df["DESTINATION"]==1]
+# print(df["PARK"].value_counts())
 
-cross_tab=pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
-#rounding the values in cross_tab to 2 decimals
-cross_tab=np.round(cross_tab,decimals=2)
-print(cross_tab)
-# cross_tab=cross_tab.iloc[:-1,:-1] 0 
-cross_tab.plot(kind='bar',stacked=True)
-plt.xlabel('Egress distance (km)')
-plt.ylabel('Percentage (%)')
-plt.title("Response to using their own bicycle \n for various Access distances \n home as origin")
-plt.xticks([0,1,2,3,4,5],['0-0.5','0.5-1','1-2','2-4','4+','ALL'])
-legend_labels=['Present condition','Cycle track','Will not use']
-plt.legend(legend_labels)
-# legend_labels = legend_labels[::-1]
-plt.xticks(rotation=0)
-plt.show()
+# cross_tab=pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
+# #rounding the values in cross_tab to 2 decimals
+# cross_tab=np.round(cross_tab,decimals=2)
+# print(cross_tab)
+# # cross_tab=cross_tab.iloc[:-1,:-1] 0 
+# cross_tab.plot(kind='bar',stacked=True)
+# plt.xlabel('Egress distance (km)')
+# plt.ylabel('Percentage (%)')
+# plt.title("Response to using their own bicycle \n for various Access distances \n home as origin")
+# plt.xticks([0,1,2,3,4,5],['0-0.5','0.5-1','1-2','2-4','4+','ALL'])
+# legend_labels=['Present condition','Cycle track','Will not use']
+# plt.legend(legend_labels)
+# # legend_labels = legend_labels[::-1]
+# plt.xticks(rotation=0)
+# plt.show()
 
-cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
+# cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
 
 
 # ############################################
@@ -849,5 +849,33 @@ cross_tab.to_csv('Response to using their own bicycle wrt Egress distance ')
 # plt.xticks([1,1.8,2.6,3.4,4.2],['0','0.5','1','2','4'])
 # plt.show()
 
-# print(df["EGRESS_DIS"].value_counts())
 
+
+# Crosstabulation plot between ACCESS_DIS_B and EGRESS_DIS_B
+# crosstab = pd.crosstab(df["EGRESS_DIS_B"],df["ACCESS_DIS_B"],margins=True
+#                        ,normalize='index')*100
+
+# # rounding the values in cross_tab to 2 decimals
+# crosstab=np.round(crosstab,decimals=2)
+# print(crosstab)
+
+# # Plotting crosstabulation
+# bar_width=0.5
+# crosstab.plot(kind='bar',stacked=True,width=bar_width)
+# plt.xlabel('Distance ranges (kms)')
+# plt.ylabel('Percentage')
+# plt.title("Egress Distance plotted on x-axis")
+# plt.xticks([0,1,2,3,4,5],['<0.5','0.5-1','1-2','2-4','>4 ','ALL'])
+# plt.legend(['<0.5','0.5-1','1-2','2-4','>4'])
+# plt.xticks(rotation=0)
+# plt.show()
+
+# # Cross tabulation between ACCESS_DIS_B and EGRESS_DIS_B but with actual values not percentages
+# crosstab = pd.crosstab(df["EGRESS_DIS_B"],df["ACCESS_DIS_B"],margins=True)
+# print(crosstab)
+
+df=df_park
+
+df=df[df["ORIGIN"]==1]
+
+print(df.shape)
