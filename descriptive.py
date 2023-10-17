@@ -932,15 +932,14 @@ df_park=pd.concat([df2,df3,df4])
 # plt.ylabel('Percentage(%)')
 # plt.title("Distribution  of ACCESS_TIME")
 # plt.show()
-df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
+# df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
 # print(df['ACCESS_TIME'].value_counts())
 # print(df.shape[0])
 
 # Export df to a csv
-
+################# BINNING ACCESS AND EGRESS TIMES #######################
 # Binning ACCESS_TIME into 4 bins 1-5, 6-10,11,20,21-60
 
-print(df['ACCESS_TIME'].value_counts())
 # Define the bin ranges
 bins = [0, 5, 10, 20, 60]
 
@@ -950,31 +949,78 @@ labels = ['1-5', '6-10', '11-20', '21-60']
 # Use pd.cut() to create the bins
 df['ACCESS_TIME_B'] = pd.cut(df['ACCESS_TIME'], bins=bins, labels=labels)
 
-# Print the resulting DataFrame
-print(df['ACCESS_TIME_B'].value_counts())
 
-df.loc[(df['EGRESS_TIME']>0) & (df['EGRESS_TIME']<=60)]
+# Define the bin ranges
+bins = [0, 5, 10, 20, 60]
 
-print(df['EGRESS_TIME'].value_counts())
+# Define labels for the bins
+labels = ['1-5', '6-10', '11-20', '21-60']
 
-df['EGRESS_TIME_B']=pd.cut(df['EGRESS_TIME'],bins=bins,labels=labels)
+# Use pd.cut() to create the bins
+df['EGRESS_TIME_B'] = pd.cut(df['EGRESS_TIME'], bins=bins, labels=labels)
 
-print(df['EGRESS_TIME_B'].value_counts())
 
-# cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
-crosstab = pd.crosstab(df["EGRESS_TIME_B"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+########################################################################
+# # Print the resulting DataFrame
+# print(df['ACCESS_TIME_B'].value_counts())
 
-# rounding the values in cross_tab to 2 decimals
-crosstab=np.round(crosstab,decimals=2)
-print(crosstab)
+# df.loc[(df['EGRESS_TIME']>0) & (df['EGRESS_TIME']<=60)]
 
-# Plotting crosstabulation
+# print(df['EGRESS_TIME'].value_counts())
+
+# df['EGRESS_TIME_B']=pd.cut(df['EGRESS_TIME'],bins=bins,labels=labels)
+
+# print(df['EGRESS_TIME_B'].value_counts())
+
+# # cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
+# crosstab = pd.crosstab(df["EGRESS_TIME_B"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+
+# # rounding the values in cross_tab to 2 decimals
+# crosstab=np.round(crosstab,decimals=2)
+# print(crosstab)
+
+# # Plotting crosstabulation
+# bar_width=0.5
+# crosstab.plot(kind='bar',stacked=True,width=bar_width)
+# plt.xlabel('EGRESS_TIME_B')
+# plt.ylabel('Percentage')
+# plt.title("Egress time plotted on horizontal axis")
+# plt.xticks([0,1,2,3],['1-5','6-10','11-20','21-60'])
+# plt.legend(['Access only','Egress only','Both','Neither'])
+# plt.xticks(rotation=0)
+# plt.show()
+# df_park=df_park.loc[(df_park['ORIGIN']==1) | (df_park['DESTINATION']==1)]
+# print(df_park['PARK'].value_counts())
+
+
+######################## ACCESS TIME VS EGRESS TIME ################################
+df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
+df=df.loc[(df['EGRESS_TIME']<=60)& (df['EGRESS_TIME']>0)]
+
+crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['ACCESS_TIME_B'],margins=True,normalize='index')*100
+
 bar_width=0.5
 crosstab.plot(kind='bar',stacked=True,width=bar_width)
-plt.xlabel('EGRESS_TIME_B')
-plt.ylabel('Percentage')
-plt.title("Egress time plotted on horizontal axis")
-plt.xticks([0,1,2,3],['1-5','6-10','11-20','21-60'])
-plt.legend(['Access only','Egress only','Both','Neither'])
+plt.xlabel('Egress time along x-axis')
+plt.ylabel("Percentage (%)")
+plt.title('Access time vs egress time')
+plt.xticks([0,1,2,3,4],['1-5','6-10','11-20','21-60','ALL'])
+plt.legend(['1-5','6-10','11-20','21-60','ALL'])
 plt.xticks(rotation=0)
-plt.show()
+# plt.show()
+print(df.shape[0])
+
+########################## SCATTER PLOT BETWEEN ACCESS TIME AND EGRESS TIME #################################
+
+# df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
+# df=df.loc[(df['EGRESS_TIME']<=60)& (df['EGRESS_TIME']>0)]
+
+# plt.scatter(df['ACCESS_TIME'],df['EGRESS_TIME'])
+# plt.xlabel('Egress time')
+# plt.ylabel('Access time')
+# plt.title('Access time vs egress time')
+# plt.show()
+
+# print(df['ACCESS_TIME'].corr(df['EGRESS_TIME']))
+
+########################################################################################
