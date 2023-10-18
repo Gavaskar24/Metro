@@ -916,7 +916,7 @@ df_park=pd.concat([df2,df3,df4])
 # plt.legend(['Current condition','Cycle track','Will not use'])
 # plt.show()
 # print(df.shape[0])
-# df=df.loc[(df['ACCESS_TIME']<=60) & (df['EGRESS_TIME']<=60)]
+# df=df.loc[(df['ACCESS_TIME']<=60) & (df['EGRESS_TIME']<=60) & (df['ACCESS_TIME']>0) & (df['EGRESS_TIME']>0)]
 # # plt.scatter(df['ACCESS_TIME'],df['EGRESS_TIME'])
 # # plt.show()
 # # sort df by ACCESS_TIME not by their value counts 
@@ -939,7 +939,8 @@ df_park=pd.concat([df2,df3,df4])
 # Export df to a csv
 ################# BINNING ACCESS AND EGRESS TIMES #######################
 # Binning ACCESS_TIME into 4 bins 1-5, 6-10,11,20,21-60
-
+# df=df_park
+# df=df.loc[(df['ACCESS_TIME']<=60) & (df['EGRESS_TIME']<=60) & (df['ACCESS_TIME']>0) & (df['EGRESS_TIME']>0)]
 # Define the bin ranges
 bins = [0, 5, 10, 20, 60]
 
@@ -972,43 +973,45 @@ df['EGRESS_TIME_B'] = pd.cut(df['EGRESS_TIME'], bins=bins, labels=labels)
 
 # print(df['EGRESS_TIME_B'].value_counts())
 
-# # cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
-# crosstab = pd.crosstab(df["EGRESS_TIME_B"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
+# df=df[df['N_BICYCLES']>0]
+# # # cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
+# crosstab = pd.crosstab(df["ACCESS_TIME_B"],df["RENT_BICYCLE"],margins=True,normalize='index')*100
 
-# # rounding the values in cross_tab to 2 decimals
+# # # rounding the values in cross_tab to 2 decimals
 # crosstab=np.round(crosstab,decimals=2)
-# print(crosstab)
+
 
 # # Plotting crosstabulation
 # bar_width=0.5
 # crosstab.plot(kind='bar',stacked=True,width=bar_width)
-# plt.xlabel('EGRESS_TIME_B')
-# plt.ylabel('Percentage')
+# plt.xlabel('Egress time')
+# plt.ylabel('Percentage (%)')
 # plt.title("Egress time plotted on horizontal axis")
-# plt.xticks([0,1,2,3],['1-5','6-10','11-20','21-60'])
+# plt.xticks([0,1,2,3,4],['1-5','6-10','11-20','21-60','ALL'])
 # plt.legend(['Access only','Egress only','Both','Neither'])
 # plt.xticks(rotation=0)
 # plt.show()
-# df_park=df_park.loc[(df_park['ORIGIN']==1) | (df_park['DESTINATION']==1)]
-# print(df_park['PARK'].value_counts())
 
+# crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['RENT_BICYCLE'])
+# print(crosstab)
+# print(df.shape)
 
 ######################## ACCESS TIME VS EGRESS TIME ################################
-df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
-df=df.loc[(df['EGRESS_TIME']<=60)& (df['EGRESS_TIME']>0)]
+# df=df.loc[(df['ACCESS_TIME']<=60) & (df['ACCESS_TIME']>0)]
+# df=df.loc[(df['EGRESS_TIME']<=60)& (df['EGRESS_TIME']>0)]
 
-crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['ACCESS_TIME_B'],margins=True,normalize='index')*100
+# crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['ACCESS_TIME_B'],margins=True,normalize='index')*100
 
-bar_width=0.5
-crosstab.plot(kind='bar',stacked=True,width=bar_width)
-plt.xlabel('Egress time along x-axis')
-plt.ylabel("Percentage (%)")
-plt.title('Access time vs egress time')
-plt.xticks([0,1,2,3,4],['1-5','6-10','11-20','21-60','ALL'])
-plt.legend(['1-5','6-10','11-20','21-60','ALL'])
-plt.xticks(rotation=0)
+# bar_width=0.5
+# crosstab.plot(kind='bar',stacked=True,width=bar_width)
+# plt.xlabel('Egress time along x-axis')
+# plt.ylabel("Percentage (%)")
+# plt.title('Access time vs egress time')
+# plt.xticks([0,1,2,3,4],['1-5','6-10','11-20','21-60','ALL'])
+# plt.legend(['1-5','6-10','11-20','21-60','ALL'])
+# plt.xticks(rotation=0)
 # plt.show()
-print(df.shape[0])
+# print(df.shape[0])
 
 ########################## SCATTER PLOT BETWEEN ACCESS TIME AND EGRESS TIME #################################
 
@@ -1024,3 +1027,28 @@ print(df.shape[0])
 # print(df['ACCESS_TIME'].corr(df['EGRESS_TIME']))
 
 ########################################################################################
+
+df=df.loc[(df['N_BICYCLES']==0) & (df['ORIGIN']==1) & (df['PARK']!=3)]
+
+# # cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
+crosstab = pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
+
+# # rounding the values in cross_tab to 2 decimals
+crosstab=np.round(crosstab,decimals=2)
+
+
+# Plotting crosstabulation
+bar_width=0.5
+crosstab.plot(kind='bar',stacked=True,width=bar_width)
+plt.xlabel('Access distance (km)')
+plt.ylabel('Percentage (%)')
+plt.title("Access distance plotted on horizontal axis")
+plt.xticks([0,1,2,3,4],['<0.5','0.5-1','1-2','2-4','>4'])
+plt.legend(['Current conditions','Cycle track','Will not use'])
+plt.xticks(rotation=0)
+plt.show()
+
+crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['PARK'])
+print(crosstab)
+print(df.shape)
+
