@@ -33,13 +33,13 @@ else:
 
 #Add header to the DataFrame
 
-df['RENT']=0
+df['PARK_RENT']=0
 if file_name=="Aug_10.csv" or file_name=="Aug_14.csv":
-    df['RENT']=10
+    df['PARK_RENT']=10
 elif file_name=="Aug_22.csv":
-    df['RENT']=5
+    df['PARK_RENT']=5
 else:
-    df['RENT']=15
+    df['PARK_RENT']=15
 
 # Converting columns into most probable datatypes
 df=df.convert_dtypes()

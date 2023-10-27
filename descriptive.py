@@ -15,8 +15,8 @@ df4=pd.read_csv('outputfile_4.csv')
 
 df=pd.concat([df1,df2,df3,df4])
 df_park=pd.concat([df2,df3,df4])
-# df.to_csv('combined.csv')
-# df_park.to_csv('parking.csv')
+# df.to_csv('Data1.csv')
+# df_park.to_csv('Data2.csv')
 
 
 
@@ -1027,28 +1027,11 @@ df['EGRESS_TIME_B'] = pd.cut(df['EGRESS_TIME'], bins=bins, labels=labels)
 # print(df['ACCESS_TIME'].corr(df['EGRESS_TIME']))
 
 ########################################################################################
+df=df.loc[(df['ACCESS_TIME']<60) & (df['EGRESS_TIME']<60)]
+import seaborn as sns
+# sns.jointplot(df,x='ACCESS_TIME',y='EGRESS_TIME',kind='scatter')
+# plt.show()
 
-df=df.loc[(df['N_BICYCLES']==0) & (df['ORIGIN']==1) & (df['PARK']!=3)]
-
-# # cross tabulation between ACCESS_TIME_B and RENT_BICYCLE
-crosstab = pd.crosstab(df["ACCESS_DIS_B"],df["PARK"],margins=True,normalize='index')*100
-
-# # rounding the values in cross_tab to 2 decimals
-crosstab=np.round(crosstab,decimals=2)
-
-
-# Plotting crosstabulation
-bar_width=0.5
-crosstab.plot(kind='bar',stacked=True,width=bar_width)
-plt.xlabel('Access distance (km)')
-plt.ylabel('Percentage (%)')
-plt.title("Access distance plotted on horizontal axis")
-plt.xticks([0,1,2,3,4],['<0.5','0.5-1','1-2','2-4','>4'])
-plt.legend(['Current conditions','Cycle track','Will not use'])
-plt.xticks(rotation=0)
+sns.histplot(df,x='PARK_RENT',hue='RENT_BICYCLE',stat="percent",multiple="dodge",shrink=0.8,palette='GnBu_r')
+# plt.legend(loc='upper left')
 plt.show()
-
-crosstab=pd.crosstab(df['EGRESS_TIME_B'],df['PARK'])
-print(crosstab)
-print(df.shape)
-
