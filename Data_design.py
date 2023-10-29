@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_31.csv"
+file_name="Aug_10.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
@@ -303,6 +303,9 @@ def map_egress_dis(EGRESS_DIS):
 
 # Apply the mapping function to create the 'EGRESS_DIS_B' column
 df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
+
+##########################
+# Mapping INCOME to numeric values
 
 
 
