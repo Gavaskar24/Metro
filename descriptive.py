@@ -19,7 +19,6 @@ df_park=pd.concat([df2,df3,df4])
 # df_park.to_csv('Data2.csv')
 
 
-
 ########################   GENDER DISTRIBUTION #################
 
 # counts, bins = np.histogram(df['MALE'], bins=2)
@@ -1034,4 +1033,6 @@ import seaborn as sns
 
 sns.histplot(df,x='PARK_RENT',hue='RENT_BICYCLE',stat="percent",multiple="dodge",shrink=0.8,palette='GnBu_r')
 # plt.legend(loc='upper left')
-plt.show()
+# plt.show()
+
+

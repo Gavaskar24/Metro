@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_10.csv"
+file_name="Aug_31.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
