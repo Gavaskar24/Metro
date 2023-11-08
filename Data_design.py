@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_31.csv"
+file_name="Aug_22.csv"
 df = pd.read_csv(file_name, skiprows=1, header=0)
 
 #Removing unwanted columns
@@ -323,3 +323,4 @@ elif file_name=="Aug_22.csv":
 else:
     df.to_csv('outputfile_4.csv',index=True)
 
+print(sum(df['INCOME'].value_counts()))
