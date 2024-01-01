@@ -323,4 +323,3 @@ elif file_name=="Aug_22.csv":
 else:
     df.to_csv('outputfile_4.csv',index=True)
 
-print(sum(df['INCOME'].value_counts()))
