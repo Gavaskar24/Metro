@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7198cd58873a6775b3567cd4ad861ab9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7198cd58873a6775b3567cd4ad861ab9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7198cd58873a6775b3567cd4ad861ab9 = L.map(
+                "map_7198cd58873a6775b3567cd4ad861ab9",
+                {
+                    center: [12.9767936, 77.590082],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_03bcedcc607e5107615b61565c84496f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_03bcedcc607e5107615b61565c84496f.addTo(map_7198cd58873a6775b3567cd4ad861ab9);
+        
+    
+            var marker_cluster_cbc1060d0921c21a19a26342bb60ba02 = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_2211feafe0872fc8cc3f1aef96b9c92d = L.marker(
+                [24.163121500000003, 73.44653178523191],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_b0d7bd793a578e93f9f0bba1a484324c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2211feafe0872fc8cc3f1aef96b9c92d.setIcon(icon_b0d7bd793a578e93f9f0bba1a484324c);
+        
+    
+        var popup_0a92b0a8db8864c72a29596d43449c84 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7b92059007422d2d26e45d73b3724b90 = $(`<div id="html_7b92059007422d2d26e45d73b3724b90" style="width: 100.0%; height: 100.0%;">Kanakpura</div>`)[0];
+                popup_0a92b0a8db8864c72a29596d43449c84.setContent(html_7b92059007422d2d26e45d73b3724b90);
+            
+        
+
+        marker_2211feafe0872fc8cc3f1aef96b9c92d.bindPopup(popup_0a92b0a8db8864c72a29596d43449c84)
+        ;
+
+        
+    
+    
+            var marker_8741254df9ee80c55633ad6229c52ccf = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_795b39d20127739cdd631262f9908445 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8741254df9ee80c55633ad6229c52ccf.setIcon(icon_795b39d20127739cdd631262f9908445);
+        
+    
+        var popup_68bfdd7dd19c1010a2f9d9dfb279f839 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_02dde0921fe3eef351f5babbb649f285 = $(`<div id="html_02dde0921fe3eef351f5babbb649f285" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_68bfdd7dd19c1010a2f9d9dfb279f839.setContent(html_02dde0921fe3eef351f5babbb649f285);
+            
+        
+
+        marker_8741254df9ee80c55633ad6229c52ccf.bindPopup(popup_68bfdd7dd19c1010a2f9d9dfb279f839)
+        ;
+
+        
+    
+    
+            var marker_71fc3c24ebe535871a96fb6da3f4337a = L.marker(
+                [12.813922550000001, 77.50691726086092],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_3505e5f1ab431eb24351d5a1a0007ce6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_71fc3c24ebe535871a96fb6da3f4337a.setIcon(icon_3505e5f1ab431eb24351d5a1a0007ce6);
+        
+    
+        var popup_968d4667cf010897be8302a05dbdd574 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_57bfa9e69de3ad62a54bfeee4789b560 = $(`<div id="html_57bfa9e69de3ad62a54bfeee4789b560" style="width: 100.0%; height: 100.0%;">Brigade meadows,</div>`)[0];
+                popup_968d4667cf010897be8302a05dbdd574.setContent(html_57bfa9e69de3ad62a54bfeee4789b560);
+            
+        
+
+        marker_71fc3c24ebe535871a96fb6da3f4337a.bindPopup(popup_968d4667cf010897be8302a05dbdd574)
+        ;
+
+        
+    
+    
+            var marker_9598cc2e0dafef0fd5342a8a70890f9f = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_6e3a0424b5212ce483860046616dd46b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9598cc2e0dafef0fd5342a8a70890f9f.setIcon(icon_6e3a0424b5212ce483860046616dd46b);
+        
+    
+        var popup_4a0063ea4bdd3bfdd0e03506331551f0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2357fe9f884f4ea3d37ae731d388cae6 = $(`<div id="html_2357fe9f884f4ea3d37ae731d388cae6" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_4a0063ea4bdd3bfdd0e03506331551f0.setContent(html_2357fe9f884f4ea3d37ae731d388cae6);
+            
+        
+
+        marker_9598cc2e0dafef0fd5342a8a70890f9f.bindPopup(popup_4a0063ea4bdd3bfdd0e03506331551f0)
+        ;
+
+        
+    
+    
+            var marker_9132f428c75ec05caf8acc23f8816bd8 = L.marker(
+                [24.163121500000003, 73.44653178523191],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_48aec2557dfd7b8792adce306713a90e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9132f428c75ec05caf8acc23f8816bd8.setIcon(icon_48aec2557dfd7b8792adce306713a90e);
+        
+    
+        var popup_d3e88845b17c717b800d5afb5c7256ea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b3ef20303d95363d4d98ee361a3497a6 = $(`<div id="html_b3ef20303d95363d4d98ee361a3497a6" style="width: 100.0%; height: 100.0%;">Kanakpura</div>`)[0];
+                popup_d3e88845b17c717b800d5afb5c7256ea.setContent(html_b3ef20303d95363d4d98ee361a3497a6);
+            
+        
+
+        marker_9132f428c75ec05caf8acc23f8816bd8.bindPopup(popup_d3e88845b17c717b800d5afb5c7256ea)
+        ;
+
+        
+    
+    
+            var marker_f4b48a7aaff95b000a5f22cfa40ef9ea = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_ee018f426cd1a77b651c0d123d3e872d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f4b48a7aaff95b000a5f22cfa40ef9ea.setIcon(icon_ee018f426cd1a77b651c0d123d3e872d);
+        
+    
+        var popup_fb33d289949a6017241100e186074ae6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_00ed62b72e4a052fbcd7374aa9a56ead = $(`<div id="html_00ed62b72e4a052fbcd7374aa9a56ead" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_fb33d289949a6017241100e186074ae6.setContent(html_00ed62b72e4a052fbcd7374aa9a56ead);
+            
+        
+
+        marker_f4b48a7aaff95b000a5f22cfa40ef9ea.bindPopup(popup_fb33d289949a6017241100e186074ae6)
+        ;
+
+        
+    
+    
+            var marker_966dc4f1cb008326287a90a2aa5a1421 = L.marker(
+                [15.8334187, 74.5111858],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_672810916f56105bd99b1e24c23bd6d1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_966dc4f1cb008326287a90a2aa5a1421.setIcon(icon_672810916f56105bd99b1e24c23bd6d1);
+        
+    
+        var popup_4275ee0eff0f683518afefbf02e33432 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_353caadce8f7240537f847ed089e598a = $(`<div id="html_353caadce8f7240537f847ed089e598a" style="width: 100.0%; height: 100.0%;">Jain college </div>`)[0];
+                popup_4275ee0eff0f683518afefbf02e33432.setContent(html_353caadce8f7240537f847ed089e598a);
+            
+        
+
+        marker_966dc4f1cb008326287a90a2aa5a1421.bindPopup(popup_4275ee0eff0f683518afefbf02e33432)
+        ;
+
+        
+    
+    
+            var marker_6a3ad5c70e7ece7f8c46dd5665b2a04e = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_661942bcb4f21645295a75a516ee6c1d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6a3ad5c70e7ece7f8c46dd5665b2a04e.setIcon(icon_661942bcb4f21645295a75a516ee6c1d);
+        
+    
+        var popup_9daad64f9a69618c9788fe960503b6e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c88e1b86fc2f40d7b45b6cbae920fbe6 = $(`<div id="html_c88e1b86fc2f40d7b45b6cbae920fbe6" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_9daad64f9a69618c9788fe960503b6e6.setContent(html_c88e1b86fc2f40d7b45b6cbae920fbe6);
+            
+        
+
+        marker_6a3ad5c70e7ece7f8c46dd5665b2a04e.bindPopup(popup_9daad64f9a69618c9788fe960503b6e6)
+        ;
+
+        
+    
+    
+            var marker_a67430ccde9ed9c8237c5930d1713c66 = L.marker(
+                [12.6801695, 77.473355],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_d045df298326a502dc57035d1795952c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_a67430ccde9ed9c8237c5930d1713c66.setIcon(icon_d045df298326a502dc57035d1795952c);
+        
+    
+        var popup_546a87eb05caf3d4ba782946f7718f38 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_589135db827002144a2e969dee0c55db = $(`<div id="html_589135db827002144a2e969dee0c55db" style="width: 100.0%; height: 100.0%;">Harohalli, 562112</div>`)[0];
+                popup_546a87eb05caf3d4ba782946f7718f38.setContent(html_589135db827002144a2e969dee0c55db);
+            
+        
+
+        marker_a67430ccde9ed9c8237c5930d1713c66.bindPopup(popup_546a87eb05caf3d4ba782946f7718f38)
+        ;
+
+        
+    
+    
+            var marker_5edd86eea8bc165b36770c7ee8cdc493 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_5e80e5e58b6d1aa3d3d3e5119c262100 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5edd86eea8bc165b36770c7ee8cdc493.setIcon(icon_5e80e5e58b6d1aa3d3d3e5119c262100);
+        
+    
+        var popup_3a6a234b9be881f1581859176d8b941a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e6953bf55d1f8d7ee5dec2924b83fb1b = $(`<div id="html_e6953bf55d1f8d7ee5dec2924b83fb1b" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_3a6a234b9be881f1581859176d8b941a.setContent(html_e6953bf55d1f8d7ee5dec2924b83fb1b);
+            
+        
+
+        marker_5edd86eea8bc165b36770c7ee8cdc493.bindPopup(popup_3a6a234b9be881f1581859176d8b941a)
+        ;
+
+        
+    
+    
+            var marker_56f26cffbb5ae6db1eb9a39a0690acf3 = L.marker(
+                [12.780458, 77.496716],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_d0516268cc7d59f098d1c7b4c36e89f5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_56f26cffbb5ae6db1eb9a39a0690acf3.setIcon(icon_d0516268cc7d59f098d1c7b4c36e89f5);
+        
+    
+        var popup_ea8ccdb20dc6706e8b97357bb555ad74 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c9d91da315953fac4a3085dbd20c0ef0 = $(`<div id="html_c9d91da315953fac4a3085dbd20c0ef0" style="width: 100.0%; height: 100.0%;">Somanahalli gate</div>`)[0];
+                popup_ea8ccdb20dc6706e8b97357bb555ad74.setContent(html_c9d91da315953fac4a3085dbd20c0ef0);
+            
+        
+
+        marker_56f26cffbb5ae6db1eb9a39a0690acf3.bindPopup(popup_ea8ccdb20dc6706e8b97357bb555ad74)
+        ;
+
+        
+    
+    
+            var marker_08241a308dcf87ace77cfe9a83c9762d = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_1e8fed32a8e6d186fa08094d975a5456 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_08241a308dcf87ace77cfe9a83c9762d.setIcon(icon_1e8fed32a8e6d186fa08094d975a5456);
+        
+    
+        var popup_1f8834dcd56e21be2dc88c06560e4257 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_81d1477e0b6013509569856bff55ebe0 = $(`<div id="html_81d1477e0b6013509569856bff55ebe0" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_1f8834dcd56e21be2dc88c06560e4257.setContent(html_81d1477e0b6013509569856bff55ebe0);
+            
+        
+
+        marker_08241a308dcf87ace77cfe9a83c9762d.bindPopup(popup_1f8834dcd56e21be2dc88c06560e4257)
+        ;
+
+        
+    
+    
+            var marker_d2d5f855a6a5e3d39ee48b401bd0c992 = L.marker(
+                [12.8446433, 77.5193333],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_a3fa46d2e5ca086db8b884ed5aabda93 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d2d5f855a6a5e3d39ee48b401bd0c992.setIcon(icon_a3fa46d2e5ca086db8b884ed5aabda93);
+        
+    
+        var popup_7e2fa57ac90496f7eda248097cb962ec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_68be5e097103752bacc4def22d016410 = $(`<div id="html_68be5e097103752bacc4def22d016410" style="width: 100.0%; height: 100.0%;">Kanakapura road</div>`)[0];
+                popup_7e2fa57ac90496f7eda248097cb962ec.setContent(html_68be5e097103752bacc4def22d016410);
+            
+        
+
+        marker_d2d5f855a6a5e3d39ee48b401bd0c992.bindPopup(popup_7e2fa57ac90496f7eda248097cb962ec)
+        ;
+
+        
+    
+    
+            var marker_fc6577f8ea6c32fb2d73fa5b2d3ed5cf = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_1c11ce322996ac6cb0891f3285595df1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fc6577f8ea6c32fb2d73fa5b2d3ed5cf.setIcon(icon_1c11ce322996ac6cb0891f3285595df1);
+        
+    
+        var popup_c250727082e94cb8e307f67ccd614458 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_042ed30f9b9f3fa30b804b142070f6c2 = $(`<div id="html_042ed30f9b9f3fa30b804b142070f6c2" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_c250727082e94cb8e307f67ccd614458.setContent(html_042ed30f9b9f3fa30b804b142070f6c2);
+            
+        
+
+        marker_fc6577f8ea6c32fb2d73fa5b2d3ed5cf.bindPopup(popup_c250727082e94cb8e307f67ccd614458)
+        ;
+
+        
+    
+    
+            var marker_26a0ef17c55f30769114dc056e3fa629 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_dad3a63a3057e6dfd9de07fb20b44cf2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_26a0ef17c55f30769114dc056e3fa629.setIcon(icon_dad3a63a3057e6dfd9de07fb20b44cf2);
+        
+    
+        var popup_1784325a53bf15d2264d05f2cfba144a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_67d22a290f0a4500647be215af1b5aac = $(`<div id="html_67d22a290f0a4500647be215af1b5aac" style="width: 100.0%; height: 100.0%;">Silk institute </div>`)[0];
+                popup_1784325a53bf15d2264d05f2cfba144a.setContent(html_67d22a290f0a4500647be215af1b5aac);
+            
+        
+
+        marker_26a0ef17c55f30769114dc056e3fa629.bindPopup(popup_1784325a53bf15d2264d05f2cfba144a)
+        ;
+
+        
+    
+    
+            var marker_1df6dbbdacda9ea1c3d03a6f98b4f84e = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_3b32d7db86da17abd2fc9680cfe2f2a2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1df6dbbdacda9ea1c3d03a6f98b4f84e.setIcon(icon_3b32d7db86da17abd2fc9680cfe2f2a2);
+        
+    
+        var popup_22da8c2eef4827b5428a13b114c0d4d3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_835bb8cd77115f2e664f4ebf9d4134aa = $(`<div id="html_835bb8cd77115f2e664f4ebf9d4134aa" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_22da8c2eef4827b5428a13b114c0d4d3.setContent(html_835bb8cd77115f2e664f4ebf9d4134aa);
+            
+        
+
+        marker_1df6dbbdacda9ea1c3d03a6f98b4f84e.bindPopup(popup_22da8c2eef4827b5428a13b114c0d4d3)
+        ;
+
+        
+    
+    
+            var marker_0c8635bb07e711a0769f08c634713802 = L.marker(
+                [12.813922550000001, 77.50691726086092],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_4c1b0373de433d9d7482e3068fa87849 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0c8635bb07e711a0769f08c634713802.setIcon(icon_4c1b0373de433d9d7482e3068fa87849);
+        
+    
+        var popup_fd9d1ec2e64ddddf9c155f9905c5aaf7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49915a398f08b7af1c1752d1dcf154f5 = $(`<div id="html_49915a398f08b7af1c1752d1dcf154f5" style="width: 100.0%; height: 100.0%;">Brigade meadows</div>`)[0];
+                popup_fd9d1ec2e64ddddf9c155f9905c5aaf7.setContent(html_49915a398f08b7af1c1752d1dcf154f5);
+            
+        
+
+        marker_0c8635bb07e711a0769f08c634713802.bindPopup(popup_fd9d1ec2e64ddddf9c155f9905c5aaf7)
+        ;
+
+        
+    
+    
+            var marker_5c50c9c30f53e0b23572c504d1386899 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_eb3d6098739c4a5b2a719cd16413c75a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5c50c9c30f53e0b23572c504d1386899.setIcon(icon_eb3d6098739c4a5b2a719cd16413c75a);
+        
+    
+        var popup_8f11dfcedc54f33535b8a87c88c01166 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ca3b2a43d83667b249e9aad78a8ce749 = $(`<div id="html_ca3b2a43d83667b249e9aad78a8ce749" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_8f11dfcedc54f33535b8a87c88c01166.setContent(html_ca3b2a43d83667b249e9aad78a8ce749);
+            
+        
+
+        marker_5c50c9c30f53e0b23572c504d1386899.bindPopup(popup_8f11dfcedc54f33535b8a87c88c01166)
+        ;
+
+        
+    
+    
+            var marker_eab8645607266c603a4c5e323638f0f8 = L.marker(
+                [9.9555748, 76.2983857],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_c11c093b693a456ac3796f838d04ce38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_eab8645607266c603a4c5e323638f0f8.setIcon(icon_c11c093b693a456ac3796f838d04ce38);
+        
+    
+        var popup_d5bdeabb3413a167dcaac18fa9e95bff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_83bb3d675de70ca10d9e26c96a0e7787 = $(`<div id="html_83bb3d675de70ca10d9e26c96a0e7787" style="width: 100.0%; height: 100.0%;">Art of living </div>`)[0];
+                popup_d5bdeabb3413a167dcaac18fa9e95bff.setContent(html_83bb3d675de70ca10d9e26c96a0e7787);
+            
+        
+
+        marker_eab8645607266c603a4c5e323638f0f8.bindPopup(popup_d5bdeabb3413a167dcaac18fa9e95bff)
+        ;
+
+        
+    
+    
+            var marker_9f4a5ffe1dad1b90e6d47e371be90d5d = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_e3fada314f2916d4f873973e70f4e4d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9f4a5ffe1dad1b90e6d47e371be90d5d.setIcon(icon_e3fada314f2916d4f873973e70f4e4d9);
+        
+    
+        var popup_a82d27187f3ee19b1a75cb083b66b2f2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5c28a789fbe5ce45dcdad3a287f16924 = $(`<div id="html_5c28a789fbe5ce45dcdad3a287f16924" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_a82d27187f3ee19b1a75cb083b66b2f2.setContent(html_5c28a789fbe5ce45dcdad3a287f16924);
+            
+        
+
+        marker_9f4a5ffe1dad1b90e6d47e371be90d5d.bindPopup(popup_a82d27187f3ee19b1a75cb083b66b2f2)
+        ;
+
+        
+    
+    
+            var marker_8965c7471f7b4536c4b7bb5f8bb51d28 = L.marker(
+                [12.5450268, 77.4199095],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_86273e002bc3acd8d8d90e1dd6e7c143 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8965c7471f7b4536c4b7bb5f8bb51d28.setIcon(icon_86273e002bc3acd8d8d90e1dd6e7c143);
+        
+    
+        var popup_9bf665bd5ec10b0ab577989ffd872a68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ab9ef5f46f6c23df354ca8f70fee3c22 = $(`<div id="html_ab9ef5f46f6c23df354ca8f70fee3c22" style="width: 100.0%; height: 100.0%;">Kanakapura </div>`)[0];
+                popup_9bf665bd5ec10b0ab577989ffd872a68.setContent(html_ab9ef5f46f6c23df354ca8f70fee3c22);
+            
+        
+
+        marker_8965c7471f7b4536c4b7bb5f8bb51d28.bindPopup(popup_9bf665bd5ec10b0ab577989ffd872a68)
+        ;
+
+        
+    
+    
+            var marker_513a6df1a4576306bb394f6165d19315 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_072ea932b7c17d9b71b916ccea710bde = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_513a6df1a4576306bb394f6165d19315.setIcon(icon_072ea932b7c17d9b71b916ccea710bde);
+        
+    
+        var popup_536716a931e2dbf5f260baa010f0141e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_16848e1d4924a94deea9e8ccbb74018c = $(`<div id="html_16848e1d4924a94deea9e8ccbb74018c" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_536716a931e2dbf5f260baa010f0141e.setContent(html_16848e1d4924a94deea9e8ccbb74018c);
+            
+        
+
+        marker_513a6df1a4576306bb394f6165d19315.bindPopup(popup_536716a931e2dbf5f260baa010f0141e)
+        ;
+
+        
+    
+    
+            var marker_ecd7dabfd41637dc8ddb1994b0eed4c1 = L.marker(
+                [26.9291996, 75.703282],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_c98e92493cab86b1393b0ae642c5b561 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ecd7dabfd41637dc8ddb1994b0eed4c1.setIcon(icon_c98e92493cab86b1393b0ae642c5b561);
+        
+    
+        var popup_a3ab5fac825df3d4edc3ae24a884d5e3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_72884d08dab026309ff4814042d7a68b = $(`<div id="html_72884d08dab026309ff4814042d7a68b" style="width: 100.0%; height: 100.0%;">Kanakpura road</div>`)[0];
+                popup_a3ab5fac825df3d4edc3ae24a884d5e3.setContent(html_72884d08dab026309ff4814042d7a68b);
+            
+        
+
+        marker_ecd7dabfd41637dc8ddb1994b0eed4c1.bindPopup(popup_a3ab5fac825df3d4edc3ae24a884d5e3)
+        ;
+
+        
+    
+    
+            var marker_90e77efb3a0db4f215d609588f1139a3 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_c116dfe91e566fc6c7e6bb6771bd8955 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_90e77efb3a0db4f215d609588f1139a3.setIcon(icon_c116dfe91e566fc6c7e6bb6771bd8955);
+        
+    
+        var popup_049d119dee96bb6a6bcb444fec362710 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_56abcf306d1bbdf73be09504738b16b4 = $(`<div id="html_56abcf306d1bbdf73be09504738b16b4" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_049d119dee96bb6a6bcb444fec362710.setContent(html_56abcf306d1bbdf73be09504738b16b4);
+            
+        
+
+        marker_90e77efb3a0db4f215d609588f1139a3.bindPopup(popup_049d119dee96bb6a6bcb444fec362710)
+        ;
+
+        
+    
+    
+            var marker_9fbed81af861fe2fcda2a231b07049c4 = L.marker(
+                [12.8221798, 77.52176141543625],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_59939a394efe83da95737a5bb4d2cf13 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9fbed81af861fe2fcda2a231b07049c4.setIcon(icon_59939a394efe83da95737a5bb4d2cf13);
+        
+    
+        var popup_13e599f09a391ff7e2b685283d8c9632 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_75eb97b7516677ec13968fabc45cdad2 = $(`<div id="html_75eb97b7516677ec13968fabc45cdad2" style="width: 100.0%; height: 100.0%;">Sri Sri ayurveda hospital,</div>`)[0];
+                popup_13e599f09a391ff7e2b685283d8c9632.setContent(html_75eb97b7516677ec13968fabc45cdad2);
+            
+        
+
+        marker_9fbed81af861fe2fcda2a231b07049c4.bindPopup(popup_13e599f09a391ff7e2b685283d8c9632)
+        ;
+
+        
+    
+    
+            var marker_cd32bf70ad1c727938f41446b05d3e5d = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_579fd8b81d94599f63716f4b8459df09 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cd32bf70ad1c727938f41446b05d3e5d.setIcon(icon_579fd8b81d94599f63716f4b8459df09);
+        
+    
+        var popup_384c62f30bfa434ea095e46b03dd3466 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d0b1b961ecb7c97ccd9c54117b473d8d = $(`<div id="html_d0b1b961ecb7c97ccd9c54117b473d8d" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_384c62f30bfa434ea095e46b03dd3466.setContent(html_d0b1b961ecb7c97ccd9c54117b473d8d);
+            
+        
+
+        marker_cd32bf70ad1c727938f41446b05d3e5d.bindPopup(popup_384c62f30bfa434ea095e46b03dd3466)
+        ;
+
+        
+    
+    
+            var marker_2beb2aded31a2675a47856f7fd047a01 = L.marker(
+                [23.0796322, 78.50528274086045],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_1aca043e3142446d14eaf324426d9d0c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2beb2aded31a2675a47856f7fd047a01.setIcon(icon_1aca043e3142446d14eaf324426d9d0c);
+        
+    
+        var popup_13bb6afe83b7cdbacab4395cfa2f1b3a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a028f5e1fcc02322a1009a9c732ad921 = $(`<div id="html_a028f5e1fcc02322a1009a9c732ad921" style="width: 100.0%; height: 100.0%;">Udaipura</div>`)[0];
+                popup_13bb6afe83b7cdbacab4395cfa2f1b3a.setContent(html_a028f5e1fcc02322a1009a9c732ad921);
+            
+        
+
+        marker_2beb2aded31a2675a47856f7fd047a01.bindPopup(popup_13bb6afe83b7cdbacab4395cfa2f1b3a)
+        ;
+
+        
+    
+    
+            var marker_d27bfa3d1b0b78c03745203c6a80e55f = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_e935f88688d47b62fc4d47c83848d21d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d27bfa3d1b0b78c03745203c6a80e55f.setIcon(icon_e935f88688d47b62fc4d47c83848d21d);
+        
+    
+        var popup_e9b508a6a7950953c3214a29cd8be2ee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e3e120237a85ebfa8eb661b3671c523 = $(`<div id="html_9e3e120237a85ebfa8eb661b3671c523" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_e9b508a6a7950953c3214a29cd8be2ee.setContent(html_9e3e120237a85ebfa8eb661b3671c523);
+            
+        
+
+        marker_d27bfa3d1b0b78c03745203c6a80e55f.bindPopup(popup_e9b508a6a7950953c3214a29cd8be2ee)
+        ;
+
+        
+    
+    
+            var marker_b888efc01f3cecc4e8256806e0f46780 = L.marker(
+                [9.3341481, 76.9085092],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_e4560207a8bc550ecd292e301d7a7eaa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b888efc01f3cecc4e8256806e0f46780.setIcon(icon_e4560207a8bc550ecd292e301d7a7eaa);
+        
+    
+        var popup_836865c4e01ea5f14fb30ade380d8b21 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b94743617952bf6c0c9f5fc0d67c6915 = $(`<div id="html_b94743617952bf6c0c9f5fc0d67c6915" style="width: 100.0%; height: 100.0%;">Ayush Ayurveda hospital </div>`)[0];
+                popup_836865c4e01ea5f14fb30ade380d8b21.setContent(html_b94743617952bf6c0c9f5fc0d67c6915);
+            
+        
+
+        marker_b888efc01f3cecc4e8256806e0f46780.bindPopup(popup_836865c4e01ea5f14fb30ade380d8b21)
+        ;
+
+        
+    
+    
+            var marker_8cffa46413c27b906277a03412b47f2d = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_775d9c068a2e2fd889507a78ef252c85 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8cffa46413c27b906277a03412b47f2d.setIcon(icon_775d9c068a2e2fd889507a78ef252c85);
+        
+    
+        var popup_ac6feb2b3e0b64517cc94056cfcdb6ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_47ca3c3f1cc1438ae08874c533e2e47f = $(`<div id="html_47ca3c3f1cc1438ae08874c533e2e47f" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_ac6feb2b3e0b64517cc94056cfcdb6ff.setContent(html_47ca3c3f1cc1438ae08874c533e2e47f);
+            
+        
+
+        marker_8cffa46413c27b906277a03412b47f2d.bindPopup(popup_ac6feb2b3e0b64517cc94056cfcdb6ff)
+        ;
+
+        
+    
+    
+            var marker_9c1218bfe9d12de55aae8eddc888feb4 = L.marker(
+                [27.2258153, 77.9476977],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_a31d1ddb0b380aa30246f6c148940266 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9c1218bfe9d12de55aae8eddc888feb4.setIcon(icon_a31d1ddb0b380aa30246f6c148940266);
+        
+    
+        var popup_ad1b2842948c9b545fd4e7f68cc12eeb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3a6cedaec98211a7c4ae6ec5019b827 = $(`<div id="html_d3a6cedaec98211a7c4ae6ec5019b827" style="width: 100.0%; height: 100.0%;">Agra cross </div>`)[0];
+                popup_ad1b2842948c9b545fd4e7f68cc12eeb.setContent(html_d3a6cedaec98211a7c4ae6ec5019b827);
+            
+        
+
+        marker_9c1218bfe9d12de55aae8eddc888feb4.bindPopup(popup_ad1b2842948c9b545fd4e7f68cc12eeb)
+        ;
+
+        
+    
+    
+            var marker_59cbd6012b518e7b90ef2d4c9824cbae = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_7cf414191e8bae0232e65d6afde14fe0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_59cbd6012b518e7b90ef2d4c9824cbae.setIcon(icon_7cf414191e8bae0232e65d6afde14fe0);
+        
+    
+        var popup_727bf973f925c3c213097559ec89f52f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8e18f3e9e2c5d184eb47e2d55ccdab8c = $(`<div id="html_8e18f3e9e2c5d184eb47e2d55ccdab8c" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_727bf973f925c3c213097559ec89f52f.setContent(html_8e18f3e9e2c5d184eb47e2d55ccdab8c);
+            
+        
+
+        marker_59cbd6012b518e7b90ef2d4c9824cbae.bindPopup(popup_727bf973f925c3c213097559ec89f52f)
+        ;
+
+        
+    
+    
+            var marker_b87ced17a98f99a4531675c2c1aad5b6 = L.marker(
+                [9.9555748, 76.2983857],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_787c33055ca19b12e921ffbfa3059aa6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b87ced17a98f99a4531675c2c1aad5b6.setIcon(icon_787c33055ca19b12e921ffbfa3059aa6);
+        
+    
+        var popup_c2c8d75a0b92d91b982119ae0c882d44 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a11376eff165b710e4eddb16a12b78cc = $(`<div id="html_a11376eff165b710e4eddb16a12b78cc" style="width: 100.0%; height: 100.0%;">Art of living </div>`)[0];
+                popup_c2c8d75a0b92d91b982119ae0c882d44.setContent(html_a11376eff165b710e4eddb16a12b78cc);
+            
+        
+
+        marker_b87ced17a98f99a4531675c2c1aad5b6.bindPopup(popup_c2c8d75a0b92d91b982119ae0c882d44)
+        ;
+
+        
+    
+    
+            var marker_72010da2cd840153d8ceee08ebcffa52 = L.marker(
+                [12.8616919, 77.5299083],
+                {}
+            ).addTo(marker_cluster_cbc1060d0921c21a19a26342bb60ba02);
+        
+    
+            var icon_c064b148461423e9cec1714e965afcb4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_72010da2cd840153d8ceee08ebcffa52.setIcon(icon_c064b148461423e9cec1714e965afcb4);
+        
+    
+        var popup_d42204c46482974c35f08a588a11a994 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ddedc04e05412d840c30feae7d4e521 = $(`<div id="html_9ddedc04e05412d840c30feae7d4e521" style="width: 100.0%; height: 100.0%;">Silk Institute </div>`)[0];
+                popup_d42204c46482974c35f08a588a11a994.setContent(html_9ddedc04e05412d840c30feae7d4e521);
+            
+        
+
+        marker_72010da2cd840153d8ceee08ebcffa52.bindPopup(popup_d42204c46482974c35f08a588a11a994)
+        ;
+
+        
+    
+    
+            marker_cluster_cbc1060d0921c21a19a26342bb60ba02.addTo(map_7198cd58873a6775b3567cd4ad861ab9);
+        
+</script>
+</html>
