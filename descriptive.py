@@ -6,10 +6,10 @@ from matplotlib.ticker import PercentFormatter
 
 # Reading two csv files and combining them together
 
-df1=pd.read_csv('outputfile_1.csv')
-df2=pd.read_csv('outputfile_2.csv')
-df3=pd.read_csv('outputfile_3.csv')
-df4=pd.read_csv('outputfile_4.csv')
+df1=pd.read_csv('Files/outputfile_1.csv')
+df2=pd.read_csv('Files/outputfile_2.csv')
+df3=pd.read_csv('Files/outputfile_3.csv')
+df4=pd.read_csv('Files/outputfile_4.csv')
 
 # df_parking=pd.read_csv('parking.csv')
 
@@ -1028,11 +1028,11 @@ df['EGRESS_TIME_B'] = pd.cut(df['EGRESS_TIME'], bins=bins, labels=labels)
 ########################################################################################
 df=df.loc[(df['ACCESS_TIME']<60) & (df['EGRESS_TIME']<60)]
 import seaborn as sns
-# sns.jointplot(df,x='ACCESS_TIME',y='EGRESS_TIME',kind='scatter')
-# plt.show()
+sns.jointplot(df,x='ACCESS_TIME',y='EGRESS_TIME',kind='scatter')
+plt.show()
 
 sns.histplot(df,x='PARK_RENT',hue='RENT_BICYCLE',stat="percent",multiple="dodge",shrink=0.8,palette='GnBu_r')
-# plt.legend(loc='upper left')
-# plt.show()
+plt.legend(loc='upper left')
+plt.show()
 
 
