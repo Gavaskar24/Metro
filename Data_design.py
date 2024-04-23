@@ -3,14 +3,16 @@ import numpy as np
 import re
 
 # Read the CSV file
-file_name="Aug_22.csv"
-df = pd.read_csv(file_name, skiprows=1, header=0)
+file_name="Aug_31.csv"
+file_path="E:/Metro1/raw_data/"+file_name
+df = pd.read_csv(file_path, skiprows=1, header=0)
 
 #Removing unwanted columns
 
 if file_name == "Aug_10.csv":
     df=df.drop(df.columns[[0,1,2,3,39]],axis=1)
-    header=pd.read_csv("Header.csv")
+
+    header=pd.read_csv("E:/Metro1/raw_data/Header.csv")
     df.columns=header.columns
     df['PARKING']='0'  ## Note: while considering parking study do not load Aug_10.csv file,
                        ## I just created another column PARKING with all values as 0 
@@ -19,13 +21,13 @@ if file_name == "Aug_10.csv":
     df['N_BICYCLES'] = df['N_BICYCLES'].str.strip()
 elif file_name=="Aug_14.csv":
     df=df.drop(df.columns[[0,1,2,3,40]],axis=1)
-    header=pd.read_csv("Header_file.csv")
+    header=pd.read_csv("E:/Metro1/raw_data/Header_file.csv")
     df.columns=header.columns
     # df['PARKING']="-1"
     # df['N_BICYCLES'] = df['N_BICYCLES'].str.strip()
 else:
     df=df.drop(df.columns[[0,1,2,3,4,41]],axis=1)
-    header=pd.read_csv("Header_file.csv")
+    header=pd.read_csv("E:/Metro1/raw_data/Header_file.csv")
     df.columns=header.columns
 #Importing dataframe with header columns
 
@@ -63,8 +65,6 @@ df['TWO_WHEELER'] = df['TWO_WHEELER'].fillna(4).astype(int)
 
 
 
-# check the dataframe for any null values
-# print(df.isnull().sum())
 
 #Removing unwanted text from few columns
 
@@ -94,7 +94,7 @@ arr=[      'Yes, I own a bicycle or I will buy a bicycle, and use it under curre
  'Yes, I own a bicycle or I will buy a bicycle, and use it if a safe bicycling path is available between my home and the metro station. .',
                                                                         'Not Applicable - because neither ends of my trip is home. .' ,
                                                                                                          'No, I will not use a bicycle. .']
-print("PARKING",arr)
+
 ###############    PARKING COLUMN ##############
 #Creating a new column PARK
 df['PARK']=-1
@@ -104,14 +104,8 @@ df['PARK']=-1
 for i in range(len(arr)):
     df.loc[df['PARKING'] == str(arr[i]), 'PARK'] = i+1
 
-df.to_csv("parking.csv")
+df.to_csv("E:/Metro1/artifacts/parking.csv")
 
-# print(df["PARK"].head(10),df["PARKING"].head(10))
-
-# Converting floats to integers in PARK and TWO_WHEELERcolumn
-# df['PARK']=df['PARK'].astype(int)
-
-# print("PARK",df["PARK"].unique())
 #################################################
 
 
@@ -136,7 +130,6 @@ df['DESTINATION'] = df['D_TYPE'].map(destination_mapping).fillna(0).astype(int)
 # and store then in new column called DESTINATION
 
 #Creating destination_types array
-
 
 origin_types=['Home','Work', 'School','Shopping','Restaurant','Social','Friend','Other']
 
@@ -182,7 +175,6 @@ for key, value in my_dict.items():
 access=['< 0.5 km ','0.5 to 1 km ','1 km to 1.5 km ', '1.5 km to 2 km ', '2 km to 2.5 km ',    
   '2.5 km to 3 km ','3 km to 3.5 km ','3.5 km to 4 km ','4 km to 4.5 km ', '4.5 km to 5 km ', '> 5 km ']
 
-print(df["EGRESS_DISTANCE"].unique())
 
 df['ACCESS_DIS']=0
 df['EGRESS_DIS']=0
@@ -312,14 +304,15 @@ df['EGRESS_DIS_B'] = df['EGRESS_DIS'].apply(map_egress_dis)
 ########################################################
 
 if file_name=="Aug_10.csv":
-    df.to_csv('outputfile_1.csv',index=True)
+    # saving the dataframe
+    df.to_csv(r'E:\Metro1\artifacts\outputfile_1.csv')
 
 elif file_name =="Aug_14.csv":
-    df.to_csv('outputfile_2.csv',index=True)
+    df.to_csv(r'E:\Metro1\artifacts\outputfile_2.csv')
 
 elif file_name=="Aug_22.csv":
-    df.to_csv('outputfile_3.csv',index=True)
+    df.to_csv(r'E:\Metro1\artifacts\outputfile_3.csv')
 
 else:
-    df.to_csv('outputfile_4.csv',index=True)
+    df.to_csv(r'E:\Metro1\artifacts\outputfile_4.csv')
 
